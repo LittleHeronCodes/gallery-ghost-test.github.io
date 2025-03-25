@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>보안 일지</title>
 	<link rel="stylesheet" href="css/security.css">
+    <script src="js/security.js"></script>
 </head>
 <body>
     <div class="container">
@@ -14,32 +15,7 @@
         <button onclick="checkCode()">확인</button>
         <div id="log"></div>
     </div>
-
-    <script>
-        function checkCode() {
-            const input = document.getElementById('codeInput').value;
-            const log = document.getElementById('log');
-            
-            if (input === "5568") {
-                log.innerText = "해당 장소는 정보가 남지 않습니다.";
-            } else if (input === "4392") {
-                log.innerText = "해당 장소는 정보가 남지 않습니다.";
-            } else if (input === "6670") {
-                log.innerText = "22:10 유관장";
-            } else if (input === "1102") {
-                log.innerText = "해당 장소는 정보가 남지 않습니다.";
-            } else if (input === "2309") {
-                log.innerText = "22:12 김경비";
-            } else if (input === "2210") {
-                log.innerText = "22:10 윤환";
-            } else if (input === "8702") {
-                log.innerText = "22:22 윤환\n22:55 김경비";
-            } else if (input === "1101") {
-                log.innerText = "22:13 마스터키\n22:32 조수영\n22:50 윤환";
-            } else {
-                log.innerText = "⚠️ 잘못된 번호입니다.";
-            }
-        }
-    </script>
 </body>
 </html>
+
+<!-- TODO Add disclaimers -->
