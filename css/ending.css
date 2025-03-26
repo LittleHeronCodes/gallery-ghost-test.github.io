@@ -30,7 +30,7 @@ h2 {
 
 /* Main container styling */
 .results-wrap {
-  max-width: 525px;
+  max-width: 600px;
   min-height: 1500px; /*todo: make this responsive to children */
   width: 90%;
   background: rgba(4, 39, 126, 0.9);
