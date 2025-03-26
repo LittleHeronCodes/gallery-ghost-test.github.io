@@ -7,7 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0;
     overflow: hidden;
 }
@@ -15,7 +15,7 @@ body {
     border: none;
     padding: 15px;
     background-color: white;
-    width: 90vw;
+    width: 90%;
     max-width: 360px;
     height: auto;
     border-radius: 12px;
