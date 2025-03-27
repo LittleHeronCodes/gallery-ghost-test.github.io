@@ -71,7 +71,7 @@ function goToEnding() {
 	if (endingTabButton) endingTabButton.classList.add('active');
 	if (endingTabContent) endingTabContent.classList.add('active');
 }
-	
+
 
 function calculateScore() {
     // Initialize score

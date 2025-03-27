@@ -27,6 +27,11 @@
 				<div id="quiz-tab" class="tab-content active">
 					<div id="page1" class="quiz-page active">
 						<div class="group">
+							<span class="span" style="color:#e7e7e7;font-size:13px;">
+								다음 두 질문은 다수결로 투표한 결과로 답해 주세요.
+							</span>
+						</div>
+						<div class="group">
 							<span class="question">Q. 윤환을 죽인 사람이 누군가요?</span>
 							<input id="killer-kim" name="killer" type="radio" value="김경비"/><label for="killer-kim" class="conts">김경비</label>
 							<input id="killer-yoo" name="killer" type="radio" value="유관장"/><label for="killer-yoo" class="conts">유관장</label>
@@ -39,7 +44,7 @@
 							<input id="vandal-yoo" name="vandal" type="radio" value="유관장"/><label for="vandal-yoo" class="conts">유관장</label>
 							<input id="vandal-jin" name="vandal" type="radio" value="진작가"/><label for="vandal-jin" class="conts">진작가</label>
 							<input id="vandal-cho" name="vandal" type="radio" value="조수영"/><label for="vandal-cho" class="conts">조수영</label>
-							<input id="vandal-yoon" name="vandal" type="radio" value="윤환"/><label for="vandal-yoon" class="conts">윤환</label>
+							<input id="vandal-yun" name="vandal" type="radio" value="윤환"  /><label for="vandal-yun" class="conts">윤환</label>
 						</div>
 						<div class="group">
 							<button type="button" onclick="nextPage()">다음 (김경비 질문)</button>
@@ -49,22 +54,22 @@
 					<div id="page2" class="quiz-page">
 						<div class="group">
 							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								김경비 혼자 답해 주세요.
+								다음 두 질문은 김경비 혼자 답해 주세요.
 							</span>
 						</div>
 						<div class="group">
-							<span class="question">Q. 쓰레기장의 Realest thought 작품의 작가는 누군가요?</span><br>
-							<input name="artist1_kim" type="radio" value="유관장" /><span class="conts">유관장</span>
-							<input name="artist1_kim" type="radio" value="진작가" /><span class="conts">진작가</span>
-							<input name="artist1_kim" type="radio" value="조수영" /><span class="conts">조수영</span>
-							<input name="artist1_kim" type="radio" value="윤환"   /><span class="conts">윤환  </span>
+							<span class="question">Q. 쓰레기장의 Realest thought 작품의 작가는 누군가요?</span>
+							<input id="artist1_kim_yoo" name="artist1_kim" type="radio" value="유관장"/><label for="artist1_kim_yoo" class="conts">유관장</label>
+							<input id="artist1_kim_jin" name="artist1_kim" type="radio" value="진작가"/><label for="artist1_kim_jin" class="conts">진작가</label>
+							<input id="artist1_kim_cho" name="artist1_kim" type="radio" value="조수영"/><label for="artist1_kim_cho" class="conts">조수영</label>
+							<input id="artist1_kim_yun" name="artist1_kim" type="radio" value="윤환"  /><label for="artist1_kim_yun" class="conts">윤환  </label>
 						</div>
 						<div class="group">
-							<span class="question">Q. 전시관의 Realest thought 작품의 작가는 누군가요?</span><br>
-							<input name="artist2_kim" type="radio" value="유관장" /><span class="conts">유관장</span>
-							<input name="artist2_kim" type="radio" value="진작가" /><span class="conts">진작가</span>
-							<input name="artist2_kim" type="radio" value="조수영" /><span class="conts">조수영</span>
-							<input name="artist2_kim" type="radio" value="윤환"   /><span class="conts">윤환  </span>
+							<span class="question">Q. 전시관의 Realest thought 작품의 작가는 누군가요?</span>
+							<input id="artist2_kim_yoo" name="artist2_kim" type="radio" value="유관장"/><label for="artist2_kim_yoo" class="conts">유관장</label>
+							<input id="artist2_kim_jin" name="artist2_kim" type="radio" value="진작가"/><label for="artist2_kim_jin" class="conts">진작가</label>
+							<input id="artist2_kim_cho" name="artist2_kim" type="radio" value="조수영"/><label for="artist2_kim_cho" class="conts">조수영</label>
+							<input id="artist2_kim_yun" name="artist2_kim" type="radio" value="윤환"  /><label for="artist2_kim_yun" class="conts">윤환  </label>
 						</div>
 						<div class="group">
 							<button type="button" onclick="prevPage()">이전 (공통 질문)</button>
@@ -75,22 +80,22 @@
 					<div id="page3" class="quiz-page">
 						<div class="group">
 							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								유관장 혼자 답해 주세요.
+								다음 두 질문은 유관장 혼자 답해 주세요.
 							</span>
 						</div>
 						<div class="group">
-							<span class="question">Q. 쓰레기장의 Realest thought 작품의 작가는 누군가요?</span><br>
-							<input name="artist1_yoo" type="radio" value="김경비" /><span class="conts">김경비</span>
-							<input name="artist1_yoo" type="radio" value="진작가" /><span class="conts">진작가</span>
-							<input name="artist1_yoo" type="radio" value="조수영" /><span class="conts">조수영</span>
-							<input name="artist1_yoo" type="radio" value="윤환"   /><span class="conts">윤환  </span>
+							<span class="question">Q. 쓰레기장의 Realest thought 작품의 작가는 누군가요?</span>
+							<input id="artist1_yoo_kim" name="artist1_yoo" type="radio" value="김경비"/><label for="artist1_yoo_kim" class="conts">김경비</label>
+							<input id="artist1_yoo_jin" name="artist1_yoo" type="radio" value="진작가"/><label for="artist1_yoo_jin" class="conts">진작가</label>
+							<input id="artist1_yoo_cho" name="artist1_yoo" type="radio" value="조수영"/><label for="artist1_yoo_cho" class="conts">조수영</label>
+							<input id="artist1_yoo_yun" name="artist1_yoo" type="radio" value="윤환"  /><label for="artist1_yoo_yun" class="conts">윤환  </label>
 						</div>
 						<div class="group">
-							<span class="question">Q. 전시관의 Realest thought 작품의 작가는 누군가요?</span><br>
-							<input name="artist2_yoo" type="radio" value="김경비" /><span class="conts">김경비</span>
-							<input name="artist2_yoo" type="radio" value="진작가" /><span class="conts">진작가</span>
-							<input name="artist2_yoo" type="radio" value="조수영" /><span class="conts">조수영</span>
-							<input name="artist2_yoo" type="radio" value="윤환"   /><span class="conts">윤환  </span>
+							<span class="question">Q. 전시관의 Realest thought 작품의 작가는 누군가요?</span>
+							<input id="artist2_yoo_kim" name="artist2_yoo" type="radio" value="김경비"/><label for="artist2_yoo_kim" class="conts">김경비</label>
+							<input id="artist2_yoo_jin" name="artist2_yoo" type="radio" value="진작가"/><label for="artist2_yoo_jin" class="conts">진작가</label>
+							<input id="artist2_yoo_cho" name="artist2_yoo" type="radio" value="조수영"/><label for="artist2_yoo_cho" class="conts">조수영</label>
+							<input id="artist2_yoo_yun" name="artist2_yoo" type="radio" value="윤환"  /><label for="artist2_yoo_yun" class="conts">윤환  </label>
 						</div>
 						<div class="group">
 							<button type="button" onclick="prevPage()">이전 (김경비 질문)</button>
@@ -98,21 +103,24 @@
 						</div>
 					</div>
 				</div>
-
+				
 				<!-- enter ending -->
 				<div id="ending-tab" class="tab-content">
 					<h2>엔딩</h2>
 					<div id="ending-group" class="ending-content">
 						<span>
-							<p>엔딩을 보려면 먼저 퀴즈를 완료해야 합니다.</p>
+							<p>엔딩을 보려면 먼저 모든 질문에 답하여야 합니다.</p>
 						</span>
+					</div>
+					<div class="group">
+						<button type="button" onclick="openTab(event, 'score-tab')">점수 보기</button>							
 					</div>
 				</div>
 
 				<!-- enter score -->
 				<div id="score-tab" class="tab-content">
 					<h2>점수판</h2>
-					<p id="scoreDisplay">Complete the quiz to see your score.</p>
+					<p id="scoreDisplay">질문에 답한 후에 점수를 확인해 주세요.</p>
 				</div>
 
 			</div>
