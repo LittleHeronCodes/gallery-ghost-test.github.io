@@ -22,8 +22,10 @@
 			<button class="tab-button" onclick="openTab(event, 'score-tab')">점수판</button>
 			
 			<div class="results-form">
+
 				<!-- enter result -->
 				<div id="quiz-tab" class="tab-content active">
+
 					<div id="page1" class="quiz-page active">
 						<div class="group">
 							<span class="span" style="color:#e7e7e7;font-size:13px;">
@@ -53,7 +55,7 @@
 					<div id="page2" class="quiz-page">
 						<div class="group">
 							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								다음 두 질문은 김경비 혼자 답해 주세요.
+								다음 질문은 김경비 혼자 답해 주세요.
 							</span>
 						</div>
 						<div class="group">
@@ -79,7 +81,7 @@
 					<div id="page3" class="quiz-page">
 						<div class="group">
 							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								다음 두 질문은 유관장 혼자 답해 주세요.
+								다음 질문은 유관장 혼자 답해 주세요.
 							</span>
 						</div>
 						<div class="group">
@@ -97,10 +99,49 @@
 							<input id="artist2_yoo_yun" name="artist2_yoo" type="radio" value="윤환"  /><label for="artist2_yoo_yun" class="conts">윤환  </label>
 						</div>
 						<div class="group">
+							<span class="question">Q. 재단 비리 관련된 증거(카드)를 획득하였나요?</span>
+							<input id="subgoal_yoo_y" name="subgoal_yoo" type="radio" value="yes"/><label for="subgoal_yoo_y" class="conts">에</label>
+							<input id="subgoal_yoo_n" name="subgoal_yoo" type="radio" value="no"/><label for="subgoal_yoo_n" class="conts">아니오</label>
+						</div>
+						<div class="group">
 							<button type="button" onclick="prevPage()">이전 (김경비 질문)</button>
-							<button type="button" onclick="goToEnding()">엔딩 보기</button>
+							<button type="button" onclick="nextPage()">다음 (진작가 질문)</button>
 						</div>
 					</div>
+
+					<div id="page4" class="quiz-page">
+						<div class="group">
+							<span class="span" style="color:#e7e7e7;font-size:13px;">
+								다음 질문은 진작가 혼자 답해 주세요.
+							</span>
+						</div>
+						<div class="group">
+							<span class="question">Q. 아이디어 노트 증거 (카드)를 획득하였나요?</span>
+							<input id="subgoal_jin_y" name="subgoal_jin" type="radio" value="yes"/><label for="subgoal_jin_y" class="conts">에</label>
+							<input id="subgoal_jin_n" name="subgoal_jin" type="radio" value="no"/><label for="subgoal_jin_n" class="conts">아니오</label>
+						</div>
+						<div class="group">
+							<button type="button" onclick="prevPage()">이전 (유관장 질문)</button>
+							<button type="button" onclick="nextPage()">다음 (조수영 질문)</button>
+						</div>
+					</div>
+
+					<div id="page5" class="quiz-page">
+						<div class="group">
+							<span class="span" style="color:#e7e7e7;font-size:13px;">
+								다음 질문은 조수영 혼자 답해 주세요.
+							</span>
+						</div>
+						<div class="group">
+							<span class="question">Q. 진작가의 15년 전 노트 증거(카드)를 획득하였나요?</span>
+							<input id="subgoal_cho_y" name="subgoal_cho" type="radio" value="yes"/><label for="subgoal_cho_y" class="conts">에</label>
+							<input id="subgoal_cho_n" name="subgoal_cho" type="radio" value="no"/><label for="subgoal_cho_n" class="conts">아니오</label>
+						</div>
+						<div class="group">
+							<button type="button" onclick="prevPage()">이전 (진작가 질문)</button>
+							<button type="button" onclick="goToEnding()">엔딩 보기</button>
+						</div>
+				  </div>
 				</div>
 				
 				<!-- enter ending -->
