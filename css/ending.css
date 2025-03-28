@@ -43,11 +43,9 @@ h2 {
   margin: auto;
 }
 
-/* .results-html {
-  width:100%;
-  height:100%;
-  position:relative;
-} */
+.results-html {
+  margin-top: 14px
+}
 
 .results-form {
   position:relative;
@@ -176,7 +174,7 @@ h2 {
   display: none;
 }
 
-.quiz-page .group {
+.group {
   margin-bottom: 20px;
 }
 
