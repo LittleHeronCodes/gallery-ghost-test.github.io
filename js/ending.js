@@ -11,7 +11,9 @@ function openTab(event, tabId) {
 	tabContents.forEach(content => content.classList.remove('active'));
   
 	// Activate the clicked tab button
-	event.currentTarget.classList.add('active');
+	if (event) {
+		event.currentTarget.classList.add('active');
+	}
   
 	// Activate the corresponding tab content
 	const activeTab = document.getElementById(tabId);
@@ -22,12 +24,6 @@ function openTab(event, tabId) {
 
 // Page control
 let currentPage = 1;
-      
-function showPage(page) {
-    document.querySelectorAll('.quiz-page').forEach(el => el.style.display = 'none');
-    document.getElementById('page' + page).style.display = 'block';
-    currentPage = page;
-}
 
 function nextPage() {
 	// Logic to navigate to the next page
@@ -56,37 +52,36 @@ function prevPage() {
 function goToEnding() {
 	// Calculate the score
 	calculateScore();
+  
+  openTab(null, 'ending-tab');
 
-	// Activate the "Ending" tab
+  // Activate the "Ending" tab button and content
 	const endingTabButton = document.querySelector('.tab-button[onclick*="ending-tab"]');
-	const endingTabContent = document.getElementById('ending-tab');
-
-	// Deactivate all tab buttons and contents
-	const tabButtons = document.querySelectorAll('.tab-button');
-	const tabContents = document.querySelectorAll('.tab-content');
-	tabButtons.forEach(button => button.classList.remove('active'));
-	tabContents.forEach(content => content.classList.remove('active'));
-
-	// Activate the "Ending" tab button and content
 	if (endingTabButton) endingTabButton.classList.add('active');
-	if (endingTabContent) endingTabContent.classList.add('active');
 }
 
+function goToScores() {
+  openTab(null, 'score-tab');
+
+  const scoreTabButton = document.querySelector('.tab-button[onclick*="score-tab"]');
+  if (scoreTabButton) scoreTabButton.classList.add('active');
+}
 
 function calculateScore() {
-    // Initialize score
-    let score = 0;
+  // Initialize score
+  let score = 0;
 
-    // Get all selected answers
-    const answers = document.querySelectorAll('input[type="radio"]:checked');
+  // Get all selected answers
+  const answers = document.querySelectorAll('input[type="radio"]:checked');
 
-    // Example scoring logic
-    answers.forEach(answer => {
-        if (answer.value === 'correct') {
-            score++;
-        }
-    });
+  // Example scoring logic
+  answers.forEach(answer => {
+    if (answer.value === 'correct') {
+      score++;
+    }
+  });
 
-    // Display the score
-    document.getElementById('scoreDisplay').textContent = `Your Score: ${score}`;
+  // Display the score
+  document.getElementById('scoreDisplay').textContent = `Your Score: ${score}`;
 }
+
