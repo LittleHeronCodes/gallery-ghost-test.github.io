@@ -1,176 +1,214 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>화가의 마지막 메시지 결과</title>
-	<link rel="stylesheet" href="css/ending.css">
-	<script src="js/ending.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>화가의 마지막 메시지 결과</title>
+  <link rel="stylesheet" href="css/ending.css">
+  <script src="js/character_goals.js" defer></script>
+  <script src="js/ending.js" defer></script>
 </head>
 <!-- TODO Add disclaimers -->
 
 <body>
-	<div class="results-wrap">
-		<div class="group">
-			<span class="span" style="color:#e7e7e7;font-size:14px;">
-				하나의 휴대폰으로 접속해서 아래에 게임 플레이 결과를 입력한 후, '엔딩 보기' 버튼을 누르면 엔딩으로 넘어갑니다.
-				<br>엔딩은 &lt;김경비&gt;가 소리내어 읽어 주세요.
-			</span>
-		</div>
+  <div class="results-wrap">
+    <div class="group">
+      <span class="span" style="font-size:14px;">
+        하나의 휴대폰으로 접속해서 아래에 게임 플레이 결과를 입력한 후, '엔딩 보기' 버튼을 누르면 엔딩으로 넘어갑니다.
+        <br>엔딩은 &lt;김경비&gt;가 소리내어 읽어 주세요.
+      </span>
+    </div>
 
-		<div class="results-html">
-			<button class="tab-button active" onclick="openTab(event, 'quiz-tab')">추리 결과</button>
-			<button class="tab-button" onclick="openTab(event, 'ending-tab')">엔딩</button>
-			<button class="tab-button" onclick="openTab(event, 'score-tab')">점수판</button>
-			
-			<div class="results-form">
+    <div class="results-html">
+      <button class="tab-button active" onclick="openTab(event, 'quiz-tab')">추리 결과</button>
+      <button class="tab-button" onclick="openTab(event, 'ending-tab')">엔딩</button>
+      <button class="tab-button" onclick="openTab(event, 'score-tab')">점수판</button>
+      
+      <div class="results-form">
 
-				<!-- enter result -->
-				<div id="quiz-tab" class="tab-content active">
+        <!-- enter result -->
+        <div id="quiz-tab" class="tab-content active">
 
-					<div id="page1" class="quiz-page active">
-						<div class="group">
-							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								다음 질문은 다수결로 투표한 결과로 답해 주세요.
-							</span>
-						</div>
-						<div class="group">
-							<span class="question">Q. 15년 전에 그린 원작 Realest thought은 어디에 있나요?</span>
-							<input id="orig1" name="original" type="radio" value="orig1"/><label for="orig1" class="conts">전시관</label>
-							<input id="orig2" name="original" type="radio" value="orig2"/><label for="orig2" class="conts">뒤뜰</label>
-						</div>
-						<div class="group">
-							<span class="question">Q. 전시관의 Realest thought의 훼손범이 누구인가요?</span>
-							<input id="vandal-kim" name="vandal" type="radio" value="김경비"/><label for="vandal-kim" class="conts">김경비</label>
-							<input id="vandal-yoo" name="vandal" type="radio" value="유관장"/><label for="vandal-yoo" class="conts">유관장</label>
-							<input id="vandal-jin" name="vandal" type="radio" value="진작가"/><label for="vandal-jin" class="conts">진작가</label>
-							<input id="vandal-cho" name="vandal" type="radio" value="조수영"/><label for="vandal-cho" class="conts">조수영</label>
-							<input id="vandal-yun" name="vandal" type="radio" value="윤환"  /><label for="vandal-yun" class="conts">윤환</label>
-						</div>
-						<div class="group">
-							<span class="question">Q. 윤환을 죽인 사람은은 누구인가요?</span>
-							<input id="killer-kim" name="killer" type="radio" value="김경비"/><label for="killer-kim" class="conts">김경비</label>
-							<input id="killer-yoo" name="killer" type="radio" value="유관장"/><label for="killer-yoo" class="conts">유관장</label>
-							<input id="killer-jin" name="killer" type="radio" value="진작가"/><label for="killer-jin" class="conts">진작가</label>
-							<input id="killer-cho" name="killer" type="radio" value="조수영"/><label for="killer-cho" class="conts">조수영</label>
-						</div>
-						<div class="group">
-							<button type="button" onclick="nextPage()">다음</button>
-						</div>
-					</div>
+          <div id="page1" class="quiz-page active">
+            <div class="group">
+              <span class="span" style="font-size:13px;">
+                다음 질문은 다수결로 투표한 결과로 답해 주세요.
+              </span>
+            </div>
+            <div class="group">
+              <span class="question">Q. 15년 전에 그린 원작 Realest thought은 어디에 있나요?</span>
+              <input id="orig1" name="original" type="radio" value="gallery"/><label for="orig1" class="conts">전시관</label>
+              <input id="orig2" name="original" type="radio" value="backyard"/><label for="orig2" class="conts">뒤뜰</label>
+            </div>
+            <div class="group">
+              <span class="question">Q. 전시관의 Realest thought의 훼손범이 누구인가요?</span>
+              <input id="vandal-kim" name="vandal" type="radio" value="김경비"/><label for="vandal-kim" class="conts">김경비</label>
+              <input id="vandal-yoo" name="vandal" type="radio" value="유관장"/><label for="vandal-yoo" class="conts">유관장</label>
+              <input id="vandal-jin" name="vandal" type="radio" value="진작가"/><label for="vandal-jin" class="conts">진작가</label>
+              <input id="vandal-cho" name="vandal" type="radio" value="조수영"/><label for="vandal-cho" class="conts">조수영</label>
+              <input id="vandal-yun" name="vandal" type="radio" value="윤환"  /><label for="vandal-yun" class="conts">윤환</label>
+            </div>
+            <div class="group">
+              <span class="question">Q. 윤환을 죽인 사람은 누구인가요?</span>
+              <input id="killer-kim" name="killer" type="radio" value="김경비"/><label for="killer-kim" class="conts">김경비</label>
+              <input id="killer-yoo" name="killer" type="radio" value="유관장"/><label for="killer-yoo" class="conts">유관장</label>
+              <input id="killer-jin" name="killer" type="radio" value="진작가"/><label for="killer-jin" class="conts">진작가</label>
+              <input id="killer-cho" name="killer" type="radio" value="조수영"/><label for="killer-cho" class="conts">조수영</label>
+            </div>
+            <div class="group">
+              <button type="button" onclick="nextPage()">다음</button>
+            </div>
+          </div>
 
-					<div id="page1-break" class="quiz-page">
-						<div class="group">
-							<span class="span" style="color:#e7e7e7;font-size:20px;">
-								핸드폰을 유관장에게 넘겨주세요.<br>
-								유관장은 &lt;다음&gt;을 눌러 질문에 답해주세요.
-							</span>
-						</div>
-						<div class="group">
-							<button type="button" onclick="prevPage()">이전</button>
-							<button type="button" onclick="nextPage()">다음</button>
-						</div>
-					</div>
-					
-					<div id="page2" class="quiz-page">
-						<div class="group">
-							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								다음 질문은 유관장 혼자 답해 주세요.
-							</span>
-						</div>
-						<div class="group">
-							<span class="question">Q. 재단 비리 관련된 증거(카드)를 획득하였나요?</span>
-							<input id="subgoal_yoo_y" name="subgoal_yoo" type="radio" value="yes"/><label for="subgoal_yoo_y" class="conts">예</label>
-							<input id="subgoal_yoo_n" name="subgoal_yoo" type="radio" value="no"/><label for="subgoal_yoo_n" class="conts">아니오</label>
-						</div>
-						<div class="group">
-							<button type="button" onclick="prevPage()">이전</button>
-							<button type="button" onclick="nextPage()">다음</button>
-						</div>
-					</div>
+          <div id="page1-break" class="quiz-page">
+            <div class="group">
+              <span class="span" style="font-size:20px;">
+                핸드폰을 유관장에게 넘겨주세요.<br>
+                유관장은 &lt;다음&gt;을 눌러 질문에 답해주세요.
+              </span>
+            </div>
+            <div class="group">
+              <button type="button" onclick="prevPage()">이전</button>
+              <button type="button" onclick="nextPage()">다음</button>
+            </div>
+          </div>
+          
+          <div id="page2" class="quiz-page">
+            <div class="group">
+              <span class="span" style="font-size:13px;">
+                다음 질문은 유관장 혼자 답해 주세요.
+              </span>
+            </div>
+            <div class="group">
+              <span class="question">Q. 재단 비리 관련된 증거(카드)를 획득하였나요?</span>
+              <input id="subgoal_yoo_y" name="subgoal_yoo" type="radio" value="yes"/><label for="subgoal_yoo_y" class="conts">예</label>
+              <input id="subgoal_yoo_n" name="subgoal_yoo" type="radio" value="no"/><label for="subgoal_yoo_n" class="conts">아니오</label>
+            </div>
+            <div class="group">
+              <button type="button" onclick="prevPage()">이전</button>
+              <button type="button" onclick="nextPage()">다음</button>
+            </div>
+          </div>
 
-					<div id="page2-break" class="quiz-page">
-						<div class="group">
-							<span class="span" style="color:#e7e7e7;font-size:20px;">
-								핸드폰을 진작가에게 넘겨주세요.<br>
-								진작가는 &lt;다음&gt;을 눌러 질문에 답해주세요.
-							</span>
-						</div>
-						<div class="group">
-							<button type="button" onclick="prevPage()">이전</button>
-							<button type="button" onclick="nextPage()">다음</button>
-						</div>
-					</div>
+          <div id="page2-break" class="quiz-page">
+            <div class="group">
+              <span class="span" style="font-size:20px;">
+                핸드폰을 진작가에게 넘겨주세요.<br>
+                진작가는 &lt;다음&gt;을 눌러 질문에 답해주세요.
+              </span>
+            </div>
+            <div class="group">
+              <button type="button" onclick="prevPage()">이전</button>
+              <button type="button" onclick="nextPage()">다음</button>
+            </div>
+          </div>
 
-					<div id="page3" class="quiz-page">
-						<div class="group">
-							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								다음 질문은 진작가 혼자 답해 주세요.
-							</span>
-						</div>
-						<div class="group">
-							<span class="question">Q. 아이디어 노트 증거 (카드)를 획득하였나요?</span>
-							<input id="subgoal_jin_y" name="subgoal_jin" type="radio" value="yes"/><label for="subgoal_jin_y" class="conts">예</label>
-							<input id="subgoal_jin_n" name="subgoal_jin" type="radio" value="no"/><label for="subgoal_jin_n" class="conts">아니오</label>
-						</div>
-						<div class="group">
-							<button type="button" onclick="prevPage()">이전</button>
-							<button type="button" onclick="nextPage()">다음</button>
-						</div>
-					</div>
+          <div id="page3" class="quiz-page">
+            <div class="group">
+              <span class="span" style="font-size:13px;">
+                다음 질문은 진작가 혼자 답해 주세요.
+              </span>
+            </div>
+            <div class="group">
+              <span class="question">Q. 아이디어 노트 증거 (카드)를 획득하였나요?</span>
+              <input id="subgoal_jin_y" name="subgoal_jin" type="radio" value="yes"/><label for="subgoal_jin_y" class="conts">예</label>
+              <input id="subgoal_jin_n" name="subgoal_jin" type="radio" value="no"/><label for="subgoal_jin_n" class="conts">아니오</label>
+            </div>
+            <div class="group">
+              <button type="button" onclick="prevPage()">이전</button>
+              <button type="button" onclick="nextPage()">다음</button>
+            </div>
+          </div>
 
-					<div id="page3-break" class="quiz-page">
-						<div class="group">
-							<span class="span" style="color:#e7e7e7;font-size:20px;">
-								핸드폰을 조수영에게 넘겨주세요.<br>
-								조수영은 &lt;다음&gt;을 눌러 질문에 답해주세요.
-							</span>
-						</div>
-						<div class="group">
-							<button type="button" onclick="prevPage()">이전</button>
-							<button type="button" onclick="nextPage()">다음</button>
-						</div>
-					</div>
+          <div id="page3-break" class="quiz-page">
+            <div class="group">
+              <span class="span" style="font-size:20px;">
+                핸드폰을 조수영에게 넘겨주세요.<br>
+                조수영은 &lt;다음&gt;을 눌러 질문에 답해주세요.
+              </span>
+            </div>
+            <div class="group">
+              <button type="button" onclick="prevPage()">이전</button>
+              <button type="button" onclick="nextPage()">다음</button>
+            </div>
+          </div>
 
-					<div id="page5" class="quiz-page">
-						<div class="group">
-							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								다음 질문은 조수영 혼자 답해 주세요.
-							</span>
-						</div>
-						<div class="group">
-							<span class="question">Q. 진작가의 15년 전 노트 증거(카드)를 획득하였나요?</span>
-							<input id="subgoal_cho_y" name="subgoal_cho" type="radio" value="yes"/><label for="subgoal_cho_y" class="conts">예</label>
-							<input id="subgoal_cho_n" name="subgoal_cho" type="radio" value="no"/><label for="subgoal_cho_n" class="conts">아니오</label>
-						</div>
-						<div class="group">
-							<button type="button" onclick="prevPage()">이전</button>
-							<button type="button" onclick="goToEnding()">엔딩 보기</button>
-						</div>
-				  </div>
-				</div>
-				
-				<!-- enter ending -->
-				<div id="ending-tab" class="tab-content">
-					<h2>엔딩</h2>
-					<div id="ending-group" class="ending-content">
-						<span>
-							<p id="endingScript">엔딩을 보려면 먼저 모든 질문에 답하여야 합니다.</p>
-						</span>
-					</div>
-					<div class="group">
-						<button type="button" onclick="goToScores()">점수 보기</button>
-					</div>
-				</div>
+          <div id="page5" class="quiz-page">
+            <div class="group">
+              <span class="span" style="font-size:13px;">
+                다음 질문은 조수영 혼자 답해 주세요.
+              </span>
+            </div>
+            <div class="group">
+              <span class="question">Q. 진작가의 15년 전 노트 증거(카드)를 획득하였나요?</span>
+              <input id="subgoal_cho_y" name="subgoal_cho" type="radio" value="yes"/><label for="subgoal_cho_y" class="conts">예</label>
+              <input id="subgoal_cho_n" name="subgoal_cho" type="radio" value="no"/><label for="subgoal_cho_n" class="conts">아니오</label>
+            </div>
+            <div class="group">
+              <button type="button" onclick="prevPage()">이전</button>
+              <button type="button" onclick="goToEnding()">엔딩 보기</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- enter ending -->
+        <div id="ending-tab" class="tab-content">
+          <h2>엔딩</h2>
+          <div id="ending-group" class="ending-content">
+            <span>
+              <p id="endingScript">엔딩을 보려면 먼저 모든 질문에 답하여야 합니다.</p>
+            </span>
+          </div>
+          <div class="group">
+            <button type="button" onclick="goToScores()">점수 보기</button>
+          </div>
+        </div>
 
-				<!-- enter score -->
-				<div id="score-tab" class="tab-content">
-					<h2>점수판</h2>
-					<p id="scoreDisplay">질문에 답한 후에 점수를 확인해 주세요.</p>
-				</div>
+        <!-- enter score -->
+        <div id="score-tab" class="tab-content">
+          <h2>점수판</h2>
+          <p id="scoreDisplay">질문에 답한 후에 점수를 확인해 주세요.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>김경비</td>
+                <td><span id="kim_score"></span></td>
+              </tr>
+              <tr>
+                <td>유관장</td>
+                <td><span id="yoo_score"></span></td>
+              </tr>
+              <tr>
+                <td>진작가</td>
+                <td><span id="jin_score"></span></td>
+              </tr>
+              <tr>
+                <td>조수영</td>
+                <td><span id="cho_score"></span></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div class="group">
+            <span class="span" style="font-size:14px;">
+                        [ 점수 계산 규칙 ]<br>
+              <span>
+              <span class="span" style="font-size:13px;">  
+              <ul>
+              <li> 점수는 각자의 목표 달성 여부에 따라 점수를 합산하면 됩니다.
+              <li> 범인 찾기 목표는 최종 투표 결과에 따라 맞췄는지 확인하면 됩니다.  
+            </span>
+          </div>  
+          </div>
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

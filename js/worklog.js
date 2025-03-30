@@ -18,7 +18,7 @@ const input = document.getElementById('dateInput').value.trim();
 			<div class='log-entry'>
 				<strong>&lt;${input}&gt;</strong><br>
 				- 야간 근무 담당자 : XXX<br>
-				- 모니터링 정보 : <span class='monitoring-status monitoring-yes'>정보 있음</span>
+				- CCTV 기록 : <span class='monitoring-status monitoring-yes'>정보 있음</span>
 			</div>
 		`;
 	} else if (logs[input]) {
@@ -26,7 +26,7 @@ const input = document.getElementById('dateInput').value.trim();
 			<div class='log-entry'>
 				<strong>&lt;${input}&gt;</strong><br>
 				- 야간 근무 담당자 : ${logs[input].guard}<br>
-				- 모니터링 정보 : <span class='monitoring-status ${logs[input].monitoring ? "monitoring-yes" : "monitoring-no"}'>
+				- CCTV 기록 : <span class='monitoring-status ${logs[input].monitoring ? "monitoring-yes" : "monitoring-no"}'>
 					${logs[input].monitoring ? "정보 있음" : "정보 없음"}
 				</span>
 			</div>

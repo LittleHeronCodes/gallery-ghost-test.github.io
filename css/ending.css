@@ -1,11 +1,48 @@
+/* 
+palette
+white: #f3f3ee ; rgba(243, 243, 238, 1)
+darkred: #700d0b ; rgba(112, 13, 11, 1)
+palered: #e8c8bd ; rgba(232, 200, 189, 1)
+red: #9f1d25 ; rgba(159, 29, 37, 1)
+grey: #a7a9ac ; rgba(167, 169, 172, 1)
+black: #1e1c1b ; rgba(30, 28, 27, 1)
+
+before palette
+darkblue: rgba(4, 39, 126, 0.9)
+blue1: #007bff
+
+*/
+:root {
+  --white: #f3f3ee;
+  --grey0: #c2c4c6;
+  --grey1: #a7a9ac;
+  --grey2: #8d8f93;
+  --black: #231f20;
+  --palered: #e8c8bd;
+  --red: #9e1d25;
+  --darkred: #77100f;
+
+  /* Additional colors for buttons, backgrounds, etc. */
+  --primary-bg: var(--darkred);
+  --primary-text: var(--palered);
+  --secondary-bg: var(--white);
+  --secondary-text: var(--black);
+  --highlight-bg: var(--red);
+  --highlight-text: var(--grey0);
+  --tab-inactive-bg: var(--grey2);
+  --tab-inactive-text: var(--red);
+  --tab-hover-bg: var(--grey1);
+  --tab-active-bg: var(--white);
+  --tab-active-text: var(--darkred);
+}
 
 /* General body styling */
 body {
   margin: 0;
   font: 600 16px/18px;
   font-family: 'Roboto', sans-serif;
-  background: rgba(0, 30, 100, 0.9);
-  color:#68d4ff;
+  background: var(--black); /*#1e1c1b*/
+  color: var(--primary-text); /*#f3f3ee*/
   /* display: flex; */
   justify-content: center;
   align-items: center;
@@ -24,7 +61,7 @@ a{
 
 /* General head 2 styling */
 h2 {
-  color: #898989;
+  color: var(--grey0); /*#a7a9ac*/
   margin-top: 0;
 }
 
@@ -33,9 +70,8 @@ h2 {
   max-width: 600px;
   min-height: 1500px; /*todo: make this responsive to children */
   width: 100%;
-  background: rgba(4, 39, 126, 0.9);
+  background: var(--primary-bg); /*#f3f3ee*/
   border-radius: 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .1), 0 17px 50px 0 rgba(0,0,0,.19);
   padding: 20px;
   text-align: center;
@@ -49,36 +85,23 @@ h2 {
 
 .results-form {
   position:relative;
-  min-height: 400px;
+  min-height: 500px;
   overflow: hidden;
+  color: var(--secondary-text);
   border-radius: 10px;
 }
-
-/* 
-.results-html .tab-button {
-  font-size: 20px;
-  font-weight: bold;
-  padding: 5px 10px 5px 10px;
-  margin: 0 10px 0 10px;
-  display: inline-block;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-}
-
-.results-html .tab-button.active {
-  border-color: #007BFF;
-} */
 
 /* Tab buttons styling */
 .tab-button {
   font-size: 18px;
   font-weight: bold;
+  min-width: 100px;
   padding: 10px 20px;
   margin: 0;
   border: none;
   border-radius: 10px 10px 0 0;
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: var(--tab-inactive-bg); /*#007bff*/
+  color: var(--tab-inactive-text); /*#ffffff*/
   cursor: pointer;
   transition: background-color 0.3s ease;
   position: relative;
@@ -86,17 +109,18 @@ h2 {
 }
 
 .tab-button:hover {
-  background-color: #0056b3;
+  background-color: var(--tab-hover-bg);
+  /* background-color: #0056b3; */
 }
 
 .tab-button.active {
-  background-color: #2881a7;
+  background-color: var(--tab-active-bg);
+  /* background-color: #2881a7; */
 }
 
 
 /* Tab content styling */
 .tab-content {
-  /* display: none; */
   position: absolute;
   top: 0;
   left: 0;
@@ -117,50 +141,11 @@ h2 {
   /* display: block; */
   /* opacity: 1; */
   visibility: visible;
-  background-color: #2881a7;
+  background-color: var(--tab-active-bg);
+  /* background-color: #2881a7; */
   z-index: 1;
 }
 
-/* 
-.results-form .tab-content {
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  position:absolute;
-  backface-visibility:hidden;
-  display: none
-}
-
-.results-html .tab-content.active {
-  display: block;
-} */
-
-/* 
-.results-form {
-  min-height: auto;
-  position: relative;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-
-.results-form .tab-content .ending-content {
-  min-height: auto;
-  max-height: 1500px;
-  overflow-y: auto;
-} */
-
-/*
-.quiz-page {
-  background: #001a67;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: left;
-  max-width: 525px;
-  width: 100%;
-  position:relative;
-  display: none;
-} */
 
 /* Quiz page styling */
 .quiz-page {
@@ -178,7 +163,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-
 .quiz-page .question {
   font-size: 16px;
   font-weight: bold;
@@ -186,13 +170,8 @@ h2 {
   display: block;
 }
 
-.quiz-page input[type="radio"] {
-  margin: 5px;
-}
-
 .quiz-page .conts {
   font-size: 14px;
-  margin-right: 10px;
 }
 
 .quiz-page.active {
@@ -200,20 +179,55 @@ h2 {
 }
 
 
+/* .quiz-page input[type="radio"] {
+  margin: 5px;
+} */
+
+
+/* Hide the default radio button */
+input[type="radio"] {
+  display: none;
+}
+
+/* Style the label as a button */
+label.conts {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 2px 2px;
+  /* border: 2px solid #007bff; */
+  border-radius: 5px;
+  background-color: var(--palered);
+  /* background-color: #004794; */
+  /* color: #007bff; Default text color */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Highlight the label when the radio button is selected */
+input[type="radio"]:checked + label.conts {
+  background-color: var(--red);
+  /* background-color: #0067d4; */
+  color: var(--white); /* Highlighted text color */
+  /* border-color: #0056b3; Highlighted border color */
+}
+
 /* Buttons for navigation */
 button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: var(--darkred);
+  color: var(--white);
+  /* background-color: #007bff; */
+  /* color: #ffffff; */
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: var(--darkred);
 }
 
 /* 
@@ -234,10 +248,6 @@ button:hover {
 p {
   font-size: 18px;
   font-weight: bold;
-}
-
-input[type="radio"] {
-  margin: 5px;
 }
 
 
