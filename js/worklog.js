@@ -16,7 +16,7 @@ const input = document.getElementById('dateInput').value.trim();
 	} else if (/^(01|02)[0-9]{2}|030[0-4]$/.test(input)) {
 		entry = `
 			<div class='log-entry'>
-				<strong>&lt;${input}&gt;</strong><br>
+				조회 일자: <strong>${input}</strong><br>
 				- 야간 근무 담당자 : XXX<br>
 				- CCTV 기록 : <span class='monitoring-status monitoring-yes'>정보 있음</span>
 			</div>
@@ -24,7 +24,7 @@ const input = document.getElementById('dateInput').value.trim();
 	} else if (logs[input]) {
 		entry = `
 			<div class='log-entry'>
-				<strong>&lt;${input}&gt;</strong><br>
+				조회 일자: <strong>${input}</strong><br>
 				- 야간 근무 담당자 : ${logs[input].guard}<br>
 				- CCTV 기록 : <span class='monitoring-status ${logs[input].monitoring ? "monitoring-yes" : "monitoring-no"}'>
 					${logs[input].monitoring ? "정보 있음" : "정보 없음"}
