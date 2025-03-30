@@ -59,6 +59,12 @@ a{
   text-decoration:none;
 }
 
+/* Remove tap highlight for mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
 /* General head 2 styling */
 h2 {
   color: var(--grey0); /*#a7a9ac*/
@@ -227,10 +233,15 @@ button {
 }
 
 button:hover {
-  background-color: var(--darkred);
+  background-color: var(--red);
 }
 
-/* 
+button:active {
+  background-color: var(--red);
+  /* transform: scale(0.98);
+  transition: transform 0.1s ease; */
+}
+
 /* Ending and score sections */
 .ending-content, #scoreDisplay {
   font-size: 18px;
