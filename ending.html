@@ -31,11 +31,16 @@
 					<div id="page1" class="quiz-page active">
 						<div class="group">
 							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								다음 두 질문은 다수결로 투표한 결과로 답해 주세요.
+								다음 질문은 다수결로 투표한 결과로 답해 주세요.
 							</span>
 						</div>
 						<div class="group">
-							<span class="question">Q. 전시관의 Realest thought의 훼손범이 누군가요?</span>
+							<span class="question">Q. 15년 전에 그린 원작 Realest thought은 어디에 있나요?</span>
+							<input id="orig1" name="original" type="radio" value="orig1"/><label for="orig1" class="conts">전시관</label>
+							<input id="orig2" name="original" type="radio" value="orig2"/><label for="orig2" class="conts">뒤뜰</label>
+						</div>
+						<div class="group">
+							<span class="question">Q. 전시관의 Realest thought의 훼손범이 누구인가요?</span>
 							<input id="vandal-kim" name="vandal" type="radio" value="김경비"/><label for="vandal-kim" class="conts">김경비</label>
 							<input id="vandal-yoo" name="vandal" type="radio" value="유관장"/><label for="vandal-yoo" class="conts">유관장</label>
 							<input id="vandal-jin" name="vandal" type="radio" value="진작가"/><label for="vandal-jin" class="conts">진작가</label>
@@ -43,62 +48,35 @@
 							<input id="vandal-yun" name="vandal" type="radio" value="윤환"  /><label for="vandal-yun" class="conts">윤환</label>
 						</div>
 						<div class="group">
-							<span class="question">Q. 윤환을 죽인 사람이 누군가요?</span>
+							<span class="question">Q. 윤환을 죽인 사람은은 누구인가요?</span>
 							<input id="killer-kim" name="killer" type="radio" value="김경비"/><label for="killer-kim" class="conts">김경비</label>
 							<input id="killer-yoo" name="killer" type="radio" value="유관장"/><label for="killer-yoo" class="conts">유관장</label>
 							<input id="killer-jin" name="killer" type="radio" value="진작가"/><label for="killer-jin" class="conts">진작가</label>
 							<input id="killer-cho" name="killer" type="radio" value="조수영"/><label for="killer-cho" class="conts">조수영</label>
 						</div>
 						<div class="group">
-							<button type="button" onclick="nextPage()">다음 (김경비 질문)</button>
+							<button type="button" onclick="nextPage()">다음</button>
 						</div>
 					</div>
 
-					<div id="page2" class="quiz-page">
+					<div id="page1-break" class="quiz-page">
 						<div class="group">
-							<span class="span" style="color:#e7e7e7;font-size:13px;">
-								다음 질문은 김경비 혼자 답해 주세요.
+							<span class="span" style="color:#e7e7e7;font-size:20px;">
+								핸드폰을 유관장에게 넘겨주세요.<br>
+								유관장은 &lt;다음&gt;을 눌러 질문에 답해주세요.
 							</span>
 						</div>
 						<div class="group">
-							<span class="question">Q. 전시관의 Realest thought 작품의 작가는 누구인가요?</span>
-							<input id="artist1_kim_yoo" name="artist1_kim" type="radio" value="유관장"/><label for="artist1_kim_yoo" class="conts">유관장</label>
-							<input id="artist1_kim_jin" name="artist1_kim" type="radio" value="진작가"/><label for="artist1_kim_jin" class="conts">진작가</label>
-							<input id="artist1_kim_cho" name="artist1_kim" type="radio" value="조수영"/><label for="artist1_kim_cho" class="conts">조수영</label>
-							<input id="artist1_kim_yun" name="artist1_kim" type="radio" value="윤환"  /><label for="artist1_kim_yun" class="conts">윤환  </label>
-						</div>
-						<div class="group">
-							<span class="question">Q. 쓰레기장의 Realest thought 작품의 작가는 누구인가요?</span>
-							<input id="artist2_kim_yoo" name="artist2_kim" type="radio" value="유관장"/><label for="artist2_kim_yoo" class="conts">유관장</label>
-							<input id="artist2_kim_jin" name="artist2_kim" type="radio" value="진작가"/><label for="artist2_kim_jin" class="conts">진작가</label>
-							<input id="artist2_kim_cho" name="artist2_kim" type="radio" value="조수영"/><label for="artist2_kim_cho" class="conts">조수영</label>
-							<input id="artist2_kim_yun" name="artist2_kim" type="radio" value="윤환"  /><label for="artist2_kim_yun" class="conts">윤환  </label>
-						</div>
-						<div class="group">
-							<button type="button" onclick="prevPage()">이전 (공통 질문)</button>
-							<button type="button" onclick="nextPage()">다음 (유관장 질문)</button>
+							<button type="button" onclick="prevPage()">이전</button>
+							<button type="button" onclick="nextPage()">다음</button>
 						</div>
 					</div>
 					
-					<div id="page3" class="quiz-page">
+					<div id="page2" class="quiz-page">
 						<div class="group">
 							<span class="span" style="color:#e7e7e7;font-size:13px;">
 								다음 질문은 유관장 혼자 답해 주세요.
 							</span>
-						</div>
-						<div class="group">
-							<span class="question">Q. 전시관의 Realest thought 작품의 작가는 누군가요?</span>
-							<input id="artist1_yoo_kim" name="artist1_yoo" type="radio" value="김경비"/><label for="artist1_yoo_kim" class="conts">김경비</label>
-							<input id="artist1_yoo_jin" name="artist1_yoo" type="radio" value="진작가"/><label for="artist1_yoo_jin" class="conts">진작가</label>
-							<input id="artist1_yoo_cho" name="artist1_yoo" type="radio" value="조수영"/><label for="artist1_yoo_cho" class="conts">조수영</label>
-							<input id="artist1_yoo_yun" name="artist1_yoo" type="radio" value="윤환"  /><label for="artist1_yoo_yun" class="conts">윤환  </label>
-						</div>
-						<div class="group">
-							<span class="question">Q. 쓰레기장의 Realest thought 작품의 작가는 누군가요?</span>
-							<input id="artist2_yoo_kim" name="artist2_yoo" type="radio" value="김경비"/><label for="artist2_yoo_kim" class="conts">김경비</label>
-							<input id="artist2_yoo_jin" name="artist2_yoo" type="radio" value="진작가"/><label for="artist2_yoo_jin" class="conts">진작가</label>
-							<input id="artist2_yoo_cho" name="artist2_yoo" type="radio" value="조수영"/><label for="artist2_yoo_cho" class="conts">조수영</label>
-							<input id="artist2_yoo_yun" name="artist2_yoo" type="radio" value="윤환"  /><label for="artist2_yoo_yun" class="conts">윤환  </label>
 						</div>
 						<div class="group">
 							<span class="question">Q. 재단 비리 관련된 증거(카드)를 획득하였나요?</span>
@@ -106,12 +84,25 @@
 							<input id="subgoal_yoo_n" name="subgoal_yoo" type="radio" value="no"/><label for="subgoal_yoo_n" class="conts">아니오</label>
 						</div>
 						<div class="group">
-							<button type="button" onclick="prevPage()">이전 (김경비 질문)</button>
-							<button type="button" onclick="nextPage()">다음 (진작가 질문)</button>
+							<button type="button" onclick="prevPage()">이전</button>
+							<button type="button" onclick="nextPage()">다음</button>
 						</div>
 					</div>
 
-					<div id="page4" class="quiz-page">
+					<div id="page2-break" class="quiz-page">
+						<div class="group">
+							<span class="span" style="color:#e7e7e7;font-size:20px;">
+								핸드폰을 진작가에게 넘겨주세요.<br>
+								진작가는 &lt;다음&gt;을 눌러 질문에 답해주세요.
+							</span>
+						</div>
+						<div class="group">
+							<button type="button" onclick="prevPage()">이전</button>
+							<button type="button" onclick="nextPage()">다음</button>
+						</div>
+					</div>
+
+					<div id="page3" class="quiz-page">
 						<div class="group">
 							<span class="span" style="color:#e7e7e7;font-size:13px;">
 								다음 질문은 진작가 혼자 답해 주세요.
@@ -123,8 +114,21 @@
 							<input id="subgoal_jin_n" name="subgoal_jin" type="radio" value="no"/><label for="subgoal_jin_n" class="conts">아니오</label>
 						</div>
 						<div class="group">
-							<button type="button" onclick="prevPage()">이전 (유관장 질문)</button>
-							<button type="button" onclick="nextPage()">다음 (조수영 질문)</button>
+							<button type="button" onclick="prevPage()">이전</button>
+							<button type="button" onclick="nextPage()">다음</button>
+						</div>
+					</div>
+
+					<div id="page3-break" class="quiz-page">
+						<div class="group">
+							<span class="span" style="color:#e7e7e7;font-size:20px;">
+								핸드폰을 조수영에게 넘겨주세요.<br>
+								조수영은 &lt;다음&gt;을 눌러 질문에 답해주세요.
+							</span>
+						</div>
+						<div class="group">
+							<button type="button" onclick="prevPage()">이전</button>
+							<button type="button" onclick="nextPage()">다음</button>
 						</div>
 					</div>
 
@@ -140,7 +144,7 @@
 							<input id="subgoal_cho_n" name="subgoal_cho" type="radio" value="no"/><label for="subgoal_cho_n" class="conts">아니오</label>
 						</div>
 						<div class="group">
-							<button type="button" onclick="prevPage()">이전 (진작가 질문)</button>
+							<button type="button" onclick="prevPage()">이전</button>
 							<button type="button" onclick="goToEnding()">엔딩 보기</button>
 						</div>
 				  </div>
@@ -151,7 +155,7 @@
 					<h2>엔딩</h2>
 					<div id="ending-group" class="ending-content">
 						<span>
-							<p>엔딩을 보려면 먼저 모든 질문에 답하여야 합니다.</p>
+							<p id="endingScript">엔딩을 보려면 먼저 모든 질문에 답하여야 합니다.</p>
 						</span>
 					</div>
 					<div class="group">

@@ -82,6 +82,7 @@ function calculateScore() {
   });
 
   // Display the score
+  document.getElementById('endingScript').textContent = `준비중`;
   document.getElementById('scoreDisplay').textContent = `준비중`;
 }
 
