@@ -79,41 +79,6 @@ Character.prototype.getScore = function(inputs) {
 
 
 
-// function getEnding(inputs) {
-
-//   // Characters states
-//   kim = new Character("김경비");
-//   // kim.stateUpdate(inputs);
-  
-//   // yoo = new Character("유관장");
-//   // yoo.stateUpdate(inputs);
-
-//   // jin = new Character("진작가");
-//   // jin.stateUpdate(inputs);
-
-//   // cho = new Character("조수영");
-//   // cho.stateUpdate(inputs);
-
-//   // Show character states
-//   answersText = console.log(kim, yoo, jin, cho);
-
-
-
-// // Get all selected radio buttons
-// const selectedAnswers = document.querySelectorAll('input[type="radio"]:checked');
-
-// // Prepare a string to display the selected answers
-// let answersText = 'Selected Answers:\n';
-
-// // Loop through each selected radio button and append its value
-// selectedAnswers.forEach(answer => {
-//   answersText += `${answer.id}: ${answer.value}\n`;
-// });
-  
-
-//   // Display the selected answers in a specific element
-//   document.getElementById('endingScript').textContent = answersText;
-// }
 // Read inputs and turn it into json list
 function getInputs() {
   // Get all selected radio buttons

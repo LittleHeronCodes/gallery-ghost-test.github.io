@@ -40,7 +40,7 @@ blue1: #007bff
 body {
   margin: 0;
   font: 600 16px/18px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'SBAggroL', sans-serif;
   background: var(--black); /*#1e1c1b*/
   color: var(--primary-text); /*#f3f3ee*/
   /* display: flex; */
