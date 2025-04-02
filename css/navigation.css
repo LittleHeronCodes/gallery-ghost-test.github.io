@@ -1,0 +1,76 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Center items horizontally */
+	justify-content: center; /* Center items vertically */
+	text-align: center;
+	margin-top: 20px;
+	/* max-width: 800px; */
+	min-height: 100vh;
+	/* align-content: center; */
+  
+}
+
+.map-image {
+	max-width: 100%;
+	height: auto;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	/* align-items: center; */
+}
+
+.panel {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 540px;
+	/* width: 540px; */
+	/* max-width: x; */
+	padding: 5px;
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	text-align: center;
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.panel.hidden {
+	display: none;
+}
+
+.panel .card-container {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+	/* flex-wrap: wrap; */
+}
+
+.panel button {
+	margin-top: 10px;
+	padding: 5px 5px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.panel button:hover {
+	background-color: #45a049;
+}
+
+.card {
+	flex: 1 1 auto;
+	max-width: 230px;
+	/* max-width: 100%; */
+	height: auto;
+	margin-top: 10px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+}
+
