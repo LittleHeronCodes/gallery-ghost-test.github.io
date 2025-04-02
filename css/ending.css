@@ -74,7 +74,7 @@ h2 {
 /* Main container styling */
 .results-wrap {
   max-width: 600px;
-  min-height: 1500px; /*todo: make this responsive to children */
+  min-height: 800px; /*todo: make this responsive to children */
   width: 100%;
   background: var(--primary-bg); /*#f3f3ee*/
   border-radius: 10px;
