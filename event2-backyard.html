@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뒤뜰</title>
+    <link rel="stylesheet" href="css/shared_fonts.css">
+    <style>
+        body {
+			font-family: 'SBAggroM', sans-serif;
+            background-color: #1e1c1b; /* Dark background */
+            color: #f3f3ee; /* Light text */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 20px;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            margin: 50px auto;
+            border-radius: 0px;
+            overflow: hidden;
+            /* perspective: 1000px; Perspective for 3D effect */
+        }
+
+        .cloth {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e8c8bd; /* Pale red for the cloth */
+            transition: transform 1s ease-in-out;
+            transform-origin: top;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+            cursor: pointer;
+        }
+
+        .cloth:hover {
+            background-color: #d8b8ad; /* Slightly lighter pale red on hover */
+        }
+
+        .cloth.revealed {
+            transform: translateY(100%); /* Simulates the cloth being pulled off */
+        }
+        
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #700d0b; /* Dark red for the canvas background */
+            border: 2px solid #9f1d25;
+            /* border-radius: 0px; */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+        }
+    </style>
+</head>
+<body>
+    <p>뒤뜰로 이동하니, 천에 감싸진 무언가가 발견됩니다.</p>
+    <p>천을 클릭하여 확인해 보세요.</p>
+
+    <div class="wrapper">
+        <div class="cloth" onclick="revealObject()"></div>
+        <canvas id="canvas" width="300" height="400"></canvas>
+    </div>
+
+    <script>
+        // Function to reveal the object
+        function revealObject() {
+            const cloth = document.querySelector('.cloth');
+            cloth.classList.add('revealed');
+        }
+
+        // Draw text on the canvas
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas background color
+        ctx.fillStyle = '#700d0b'; // Dark red
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Function to wrap and draw text
+        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+                const words = text.split(' ');
+                let line = '';
+                let lines = [];
+        
+                for (let i = 0; i < words.length; i++) {
+                    const testLine = line + words[i] + ' ';
+                    const testWidth = context.measureText(testLine).width;
+        
+                    if (testWidth > maxWidth && i > 0) {
+                        lines.push(line);
+                        line = words[i] + ' ';
+                    } else {
+                        line = testLine;
+                    }
+                }
+                lines.push(line);
+        
+                // Draw each line
+                for (let i = 0; i < lines.length; i++) {
+                    context.fillText(lines[i], x, y + i * lineHeight);
+                }
+            }
+            
+        // Add text to the canvas
+        ctx.font = '20px SBAggroB, Arial, sans-serif'; // Custom font
+        ctx.fillStyle = '#f3f3ee'; // Light text color
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        const text = '"Realest thought"와 똑같은 그림이 있습니다.';
+        const maxWidth = 250; // Maximum width for the text
+        const lineHeight = 30; // Line height for the text
+        const x = canvas.width / 2; // Centered x position
+        const y = canvas.height / 2 - (lineHeight / 2); // Centered y position
+        
+        wrapText(ctx, text, x, y, maxWidth, lineHeight);
+    </script>
+</body>
+</html>

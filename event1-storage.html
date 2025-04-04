@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>창고</title>
+    <link rel="stylesheet" href="css/shared_fonts.css">
+    <style>
+        body {
+            font-family: 'SBAggroM', sans-serif;
+            background-color: #1e1c1b; /* Dark background */
+            color: #f3f3ee; /* Light text */
+            text-align: center;
+            /* margin: 0; */
+            padding: 0;
+			/* transition: transform 2s ease-in-out, scale 2s ease-in-out; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 20px;
+        }
+
+        .text-container {
+            position: fixed; /* Fixed position to prevent movement */
+            top: 10%;
+            text-align: center;
+            color: #f3f3ee;
+            font-family: 'SBAggroM', sans-serif;
+            font-size: 1.5rem;
+            z-index: 0; /* Ensure it stays above other elements */
+        }
+
+        .container {
+            perspective: 1200px;
+			/* justify-content: center;
+			align-items: center;
+			height: 100vh; */
+            /* width: 300px; */
+            /* height: 500px; */
+			/* display: flex; */
+			overflow: visible;
+            transition: transform 2s ease-in-out; /* Apply zoom effect here */
+        }
+
+        .container.zoom-in {
+            transform: scale(2) translate(0%);
+            transform-origin: center;
+        }
+
+        .door-frame {
+            position: relative;
+            width: 180px;
+            height: 350px;
+            background-color: #444;
+            border: 12px solid #222;
+            border-radius: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+			/* display: flex;
+			perspective: 1200px; */
+			transform-style: preserve-3d;
+        }
+
+        .door {
+            width: 175px;
+            height: 345px;
+            background: linear-gradient(to right, #8B5A2B, #A67B5B);
+            border-radius: 2px;
+			flex-grow: 1;
+            position: absolute;
+			transform-style: preserve-3d;
+            transform-origin: left center;
+            transition: transform 1.5s ease-in-out;
+            /* transition: all 1.5s; */
+            cursor: pointer;
+			backface-visibility: hidden;
+            /* position: absolute;
+            left: 0;
+            transition: transform 1.5s ease-in-out;
+            transform-origin: left;
+            cursor: pointer; */
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+            z-index: 2; /* Ensure the door is above the text */
+
+        }
+
+		.door:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(to right, #8B5A2B, #A67B5B);
+			backface-visibility: hidden;
+			transform-style: preserve-3d;
+			transform: rotateY(180deg);
+		}
+
+        .door.open {
+            /* transform: rotateY(-110deg); */
+			transform: rotate3d(0, 1, 0, -130deg);
+        }
+		
+        body.zoom-in {
+            transform: scale(2) translateY(-10%);
+        }
+		
+        .hidden-text {
+            position: absolute;
+            font-size: 1.0rem;
+            color: #f3f3ee; /* Light text color */
+            text-align: center;
+            z-index: 1; /* Ensure the text is behind the door */
+			opacity: 0; /* Initially hidden */
+			transition: opacity 1s ease-in-out; /* Fade in effect */
+        }
+
+		.hidden-text.visible {
+			opacity: 1; /* Show the text when the door is opened */
+		}
+
+    </style>
+</head>
+<body>
+	<div class="text-container">
+		<p>창고 문을 클릭하여 열어보세요.</p>
+	</div>
+		
+    <div class="container">
+        <div class="door-frame">
+			<div class="hidden-text">
+				<p>들어가 보니, 윤환의 시체가 있습니다.</p>
+				<p>이제부터 "창고"를 탐사할 수 있습니다.</p>
+			</div>
+            <div class="door" onclick="openDoor()"></div>
+        </div>
+    </div>
+
+    <script>
+        function openDoor() {
+            const door = document.querySelector('.door');
+            const container = document.querySelector('.container');
+            const hiddenText = document.querySelector('.hidden-text');
+
+            // Open the door
+            door.classList.add('open');
+
+            // Zoom in after the door opens
+            setTimeout(() => {
+                container.classList.add('zoom-in');
+            }, 800); // Delay for door opening animation
+
+            // Show the hidden text after zoom-in animation
+            setTimeout(() => {
+                hiddenText.classList.add('visible');
+            }, 2800); // Delay for zoom-in animation (2s) + extra buffer
+
+        }
+    </script>
+</body>
+</html>

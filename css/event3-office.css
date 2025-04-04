@@ -1,0 +1,113 @@
+:root {
+  --white: #f3f3ee;
+  --darkred: #700d0b;
+  --palered: #e8c8bd;
+  --red: #9f1d25;
+  --grey: #a7a9ac;
+  --black: #1e1c1b;
+}
+
+body {
+  font-family: 'SBAggroL', sans-serif;
+  background-color: var(--black); /* Dark background for a secure, serious tone */
+  color: var(--white); /* Light text for contrast */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+p {
+  font-size: 1.2rem;
+  color: var(--palered); /* Muted red for descriptive text */
+  margin: 20px 0;
+}
+
+.container {
+  background-color: var(--darkred); /* Dark red for a bold, secure look */
+  border: 2px solid var(--red); /* Red border for emphasis */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: var(--white); /* White text for readability */
+}
+
+.container:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+h1 {
+  font-size: 1.5rem;
+  color: var(--white); /* White text for headings */
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: var(--red); /* Red button background */
+  color: var(--white); /* White text */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: var(--darkred); /* Darker red on hover */
+}
+
+input[type="text"] {
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid var(--grey); /* Grey border for inputs */
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: var(--white); /* Light background for inputs */
+  color: var(--black); /* Dark text for inputs */
+}
+
+.log-display {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: var(--palered); /* Light red background for logs */
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: var(--black); /* Dark text for logs */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  input[type="text"] {
+    font-size: 0.9rem;
+  }
+}
