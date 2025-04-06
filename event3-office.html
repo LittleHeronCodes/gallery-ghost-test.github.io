@@ -4,21 +4,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>보안실</title>
-	<link rel="stylesheet" href="css/event3-office.css">
-    <!-- <script src="js/security.js"></script> -->
+    <link rel="stylesheet" href="css/shared_fonts.css">
+    <link rel="stylesheet" href="css/event3-office.css">
+    <style>
+	
+    </style>
 </head>
 <body>
-	<p>보안실에 들어가보니, "근무 일지"와 "출입기록 조회 패널"이 있습니다.</p>
-	<p>각각의 패널을 클릭하여 확인해 보세요.</p>
-	<a href="security.html" style="text-decoration: none; color: inherit;">
-		<div class="container">
-			<h1>🔒 출입 기록 조회 🔒</h1>
-		</div>
-	</a>
-	<a href="worklog.html" style="text-decoration: none; color: inherit;">
-		<div class="container">
-			<h1>📜 근무 일지 📜</h1>
-		</div>
-	</a>
+    <p>
+		&lt;보안실&gt;에 들어가보니, '출입기록 조회 패널'이 있습니다.<br>
+		패널에 인물 별로 '카드 키 고유번호'를 입력하여 출입 기록을 확인해 보세요.
+	</p>
+
+    <div class="container">
+        <!-- Card 1 -->
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">유관장</div>
+                <div class="card-back">
+                    <p>고유번호 입력</p>
+                    <input type="text" placeholder="고유번호" class="input-field">
+                    <button class="submit-button" onclick="checkPassword(this, 'IUNCTN', 'card1-content')">확인</button>
+                    <p class="result-message"></p>
+                </div>
+				<div id="card1-content" class="card-hidden">
+					<h3>"유관장" 출입 기록</h3>
+					<p>[15:20] &lt;전시관&gt;</p>
+					<p>[22:10] &lt;관장실&gt;</p>
+				</div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">김경비</div>
+                <div class="card-back">
+					<p>고유번호 입력</p>
+					<input type="text" placeholder="고유번호" class="input-field">
+					<button class="submit-button" onclick="checkPassword(this, 'OWDQEB', 'card2-content')">확인</button>
+					<p class="result-message"></p>
+                </div>
+				<div id="card2-content" class="card-hidden">
+					<h3>"김경비" 출입 기록</h3>
+					<p>[16:30] &lt;전시관&gt;</p>
+					<p>[22:12] &lt;보안실&gt;</p>
+				</div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">조수영</div>
+                <div class="card-back">
+					<p>고유번호 입력</p>
+					<input type="text" placeholder="고유번호" class="input-field">
+					<button class="submit-button" onclick="checkPassword(this, 'VSJCSH', 'card3-content')">확인</button>
+					<p class="result-message"></p>
+                </div>
+				<div id="card3-content" class="card-hidden">
+					<h3>"조수영" 출입 기록</h3>
+					<p>[14:00] &lt;전시관&gt;</p>
+					<p>[15:25] &lt;공동 작업실&gt;</p>
+					<p>[22:32] &lt;작업실&gt;</p>
+				</div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">윤환</div>
+                <div class="card-back">
+					<p>고유번호 입력</p>
+					<input type="text" placeholder="고유번호" class="input-field">
+					<button class="submit-button" onclick="checkPassword(this, 'VDEQDI', 'card4-content')">확인</button>
+					<p class="result-message"></p>
+                </div>
+				<div id="card4-content" class="card-hidden">
+					<h3>"윤환" 출입 기록</h3>
+					<p>[18:05] &lt;전시관&gt;</p>
+					<p>[18:05] &lt;전시관 자동잠금 및 기록 해제 설정&gt;</p>
+					<p>[18:15] &lt;공동 작업실&gt;</p>
+					<p>[22:10] &lt;공동 작업실&gt;</p>
+					<p>[22:50] &lt;개인 작업실&gt;</p>
+				</div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">마스터키</div>
+                <div class="card-back">
+					<p>고유번호 입력</p>
+					<input type="text" placeholder="고유번호" class="input-field">
+					<button class="submit-button" onclick="checkPassword(this, 'ETJQTN', 'card5-content')">확인</button>
+					<p class="result-message"></p>
+                </div>
+				<div id="card5-content" class="card-hidden">
+					<h3>"마스터키" 출입 기록</h3>
+					<p>[22:13] &lt;개인 작업실&gt;</p>
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to flip the card
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        // Function to check the password and show hidden content
+        function checkPassword(button, correctPassword, contentId) {
+            const inputField = button.previousElementSibling; // Get the input field
+            const resultMessage = button.nextElementSibling; // Get the result message element
+            const hiddenContent = document.getElementById(contentId); // Get the hidden content div
+			const cardBack = button.parentElement; // Get the card-back element
+
+            if (inputField.value === correctPassword) {
+				// Position the hidden content immediately but keep it invisible
+				hiddenContent.style.display = 'flex';
+				hiddenContent.style.opacity = '0';
+				
+				// Ensure both elements are present during the transition
+                setTimeout(() => {
+					// Start fading in the hidden content while card-back is still visible
+					hiddenContent.style.opacity = '1';
+					
+					// Start fading out the card-back after a small delay
+					setTimeout(() => {
+						cardBack.style.opacity = '0';
+						
+						// Hide the card-back completely after it fades out
+						setTimeout(() => {
+							cardBack.style.display = 'none';
+							hiddenContent.classList.add('visible');
+						}, 500);
+					}, 100);
+				}, 50);
+            } else {
+                resultMessage.textContent = "잘못된 비밀번호입니다. 다시 시도하세요.";
+                resultMessage.classList.add('error');
+                resultMessage.classList.remove('success');
+            }
+        }
+		
+    // Add event listeners after DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Prevent card from flipping when input or button is clicked
+        const inputs = document.querySelectorAll('.input-field, .submit-button');
+        inputs.forEach(input => {
+            input.addEventListener('click', function(event) {
+                event.stopPropagation(); // Stop the click event from bubbling up
+            });
+        });
+    });
+    </script>
 </body>
 </html>
