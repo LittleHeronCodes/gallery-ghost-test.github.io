@@ -6,10 +6,8 @@ palered: #e8c8bd ; rgba(232, 200, 189, 1)
 red: #9f1d25 ; rgba(159, 29, 37, 1)
 grey: #a7a9ac ; rgba(167, 169, 172, 1)
 black: #1e1c1b ; rgba(30, 28, 27, 1)
-
-before palette
-darkblue: rgba(4, 39, 126, 0.9)
 blue1: #007bff
+darkblue: #04277e ; rgba(4, 39, 126, 0.9)
 
 */
 :root {
