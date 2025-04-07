@@ -58,8 +58,8 @@ p {
 }
 
 .card {
-	width: 120px;
-	height: 160px;
+	width: 140px;
+	height: 200px;
 	perspective: 1000px; /* Add perspective for 3D effect */
 	cursor: pointer;
 }
