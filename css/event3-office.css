@@ -1,20 +1,20 @@
 :root {
-  --white: #f3f3ee;
-  --darkred: #700d0b;
-  --palered: #e8c8bd;
-  --red: #9f1d25;
-  --grey: #a7a9ac;
-  --black: #1e1c1b;
+	--white: #f3f3ee;
+	--darkred: #700d0b;
+	--palered: #e8c8bd;
+	--red: #9f1d25;
+	--grey: #a7a9ac;
+	--black: #1e1c1b;
 	--blue: #0066ff;
 	/* --blue: #007bff; */
 	--cyan: #00ccff;
 	--lightcyan: #80dfff;
-  --darkblue: #04277e;
+	--darkblue: #04277e;
 }
 
 /* Remove tap highlight for mobile */
 * {
-  -webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent;
 }
 
 /* General reset and body styling */
@@ -24,8 +24,8 @@ html {
 }
 
 body {
-  background-color: var(--black); /* Dark background for a secure, serious tone */
-  color: var(--white); /* Light text for contrast */
+	background-color: var(--black); /* Dark background for a secure, serious tone */
+	color: var(--white); /* Light text for contrast */
 	text-align: center;
 	margin: 5px;
 	padding: 10px;
@@ -39,7 +39,7 @@ body {
 p {
 	margin: 0;
 	padding: 0;
-	font-size: 0.9rem; /* Adjusted for readability */
+	font-size: 0.85rem; /* Adjusted for readability */
 	color: var(--white); /* Grey text for less emphasis */
 }
 
@@ -157,7 +157,8 @@ p {
 
 /* Individual card front images */
 .card:nth-child(1) .card-front {
-	background-image: url('https://www.dropbox.com/scl/fi/y4mc0i9n0fr04hgbvrzr5/11.png?rlkey=0h79xp6thzmf82ai23okpl9zu&st=vw23hhsw&raw=1');
+	background-image: url('../assets/keycards/yoo.png');
+	/* background-image: url('https://www.dropbox.com/scl/fi/y4mc0i9n0fr04hgbvrzr5/11.png?rlkey=0h79xp6thzmf82ai23okpl9zu&st=vw23hhsw&raw=1'); */
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Make text readable over image */
 }
 
@@ -167,7 +168,8 @@ p {
 }
 
 .card:nth-child(3) .card-front {
-	background-image: url('https://www.dropbox.com/scl/fi/x9y5anrblynwio24estsl/12.png?rlkey=h5k72rx8g1anhcy9lwnf386vz&st=dmgnqw41&raw=1');
+	background-image: url('../assets/keycards/cho.png');
+	/* background-image: url('https://www.dropbox.com/scl/fi/x9y5anrblynwio24estsl/12.png?rlkey=h5k72rx8g1anhcy9lwnf386vz&st=dmgnqw41&raw=1'); */
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
@@ -181,6 +183,11 @@ p {
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
+/* Make the 5th card span two columns in the third row */
+.card:nth-child(5) {
+	grid-column: 1 / span 2;
+	justify-self: center;
+}
 
 .card-back {
 	font-weight: normal;
@@ -224,23 +231,19 @@ p {
 
 .card-hidden p {
 	font-size: 0.7rem;
-	/* margin: 5px */
+	text-align: left; 
+	margin: 2px;
+	width: 95%;
 }
 
 .result-message {
 	margin-top: 10px;
 	font-size: 0.7rem;
-	color: var(--red); /* Dark red for error messages */
+	color: var(--palered); /* Dark red for error messages */
 }
 
 .result-message.success {
-	color: var(--blue); /* Blue for success messages */
-}
-
-/* Make the 5th card span two rows in the third column */
-.card:nth-child(5) {
-	grid-column: span 1; /* Place in the third column */
-	align-self: center;
+	color: var(--cyan); /* Blue for success messages */
 }
 
 .input-field {
@@ -285,6 +288,7 @@ p {
 	.card:nth-child(5) {
 		grid-column: 3; /* Place in the third column */
 		grid-row: 1 / span 2; /* Span two rows */
+		justify-self: center;
 	}
 }
 
