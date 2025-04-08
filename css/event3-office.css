@@ -163,7 +163,7 @@ p {
 }
 
 .card:nth-child(2) .card-front {
-	background-image: url('../assets/keycards/kim.png');
+	background-image: url('../assets/keycards/yun.png');
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
@@ -174,7 +174,7 @@ p {
 }
 
 .card:nth-child(4) .card-front {
-	background-image: url('../assets/keycards/yun.png');
+	background-image: url('../assets/keycards/kim.png');
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
