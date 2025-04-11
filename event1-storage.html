@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>창고</title>
   <link rel="stylesheet" href="css/shared_fonts.css">
+  <link rel="stylesheet" href="css/event1-storage-door.css">
   <style>
     body {
       font-family: 'SBAggroM', sans-serif;
@@ -21,12 +22,12 @@
       margin: 0;
       overflow: hidden;
     }
-
+    
     p {
       font-size: 1.2rem;
       margin: 20px;
     }
-
+    
     .text-container {
       position: fixed; /* Fixed position to prevent movement */
       top: 10%;
@@ -36,167 +37,41 @@
       font-size: 0.8rem;
       z-index: 0; /* Ensure it stays above other elements */
     }
-
+    
     .container {
       perspective: 1200px;
       overflow: visible;
       transition: transform 2s ease-in-out; /* Apply zoom effect here */
     }
-
+    
     .container.zoom-in {
       transform: scale(2) translate(0%);
       transform-origin: center;
-    }
-
-    /* Door frame */
-    .door-frame {
-      position: relative;
-      width: 220px;
-      height: 380px;
-      background-color: #333;
-      border: 6px solid #222;
-      border-radius: 2px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: visible;
-      transform-style: preserve-3d;
-      box-shadow:
-        0 0 20px rgba(0, 0, 0, 0.8),
-        inset 0 0 10px rgba(0, 0, 0, 0.5); 
-    }
-
-    /* Door hinge */
-    .hinge {
-      position: absolute;
-      width: 12px;
-      height: 35px;
-      background: linear-gradient(to right, #555, #777, #555);
-      border-radius: 2px;
-      left: -3px;
-      border: 1px solid #444;
-      z-index: 3; /* Ensure the hinge is above the door */
-    }
-
-    .hinge-top {
-      top: 60px;
-    }
-
-    .hinge-bottom {
-      bottom: 60px;
-    }
-
-    /* Door handle */
-    .handle {
-      position: absolute;
-      width: 10px;
-      height: 30px;
-      background: linear-gradient(to right, #ac0303, #6e0101, #ac0303);
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      border-radius: 3px;
-      z-index: 3;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
-    }
-
-    
-    /* Door frame details */
-    .frame-detail {
-      position: absolute;
-      background: #222;
-      z-index: 1;
-    }
-    
-    .frame-top, .frame-bottom {
-      height: 4px;
-      width: calc(100% - 10px);
-      left: 5px;
-    }
-    
-    .frame-top {
-      top: 5px;
-    }
-    
-    .frame-bottom {
-      bottom: 5px;
-    }
-    
-    .frame-left, .frame-right {
-      width: 4px;
-      height: calc(100% - 10px);
-      top: 5px;
-    }
-    
-    .frame-left {
-      left: 5px;
-    }
-    
-    .frame-right {
-      right: 5px;
-    }
-    
-    /* Door texture overlay */
-    .door-texture {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      background-image: 
-        repeating-linear-gradient(
-          to bottom,
-          transparent 0px,
-          transparent 60px,
-          rgba(0, 0, 0, 0.1) 60px,
-          rgba(0, 0, 0, 0.1) 62px
-        );
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    /* Door styles */
-    .door {
-      width: 185px;
-      height: 355px;
-      background: linear-gradient(to right, #8B5A2B, #A67B5B);
-      border-radius: 2px;
-      flex-grow: 1;
-      position: absolute;
-      transform-style: preserve-3d;
-      transform-origin: left center;
-      transition: transform 1.5s ease-in-out;
-      cursor: pointer;
-      backface-visibility: hidden;
-      box-shadow: 
-        0 4px 10px rgba(0, 0, 0, 0.5),
-        inset 0 0 5px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
-      z-index: 2; /* Ensure the door is above the text */
-
-    }
-
-    .door:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to right, #8B5A2B, #A67B5B);
-      backface-visibility: hidden;
-      transform-style: preserve-3d;
-      transform: rotateY(180deg);
-    }
-
-    .door.open {
-      transform: rotateY(-105deg);
-      /* transform: rotate3d(0, 1, 0, -130deg); */
     }
     
     body.zoom-in {
       transform: scale(2.0) translateY(-10%);
     }
     
+    .behind-door-image {
+      position: absolute;
+      width: 95%;
+      height: 95%;
+      background-image: url("assets/storage-hidden.png");
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out; /* Fade in effect */
+      z-index: 0;
+      max-width: 95vw; /* Ensure it doesn't exceed viewport width */
+      max-height: 95vh;
+      object-fit: contain; /* Ensure entire image is visible */
+    }
+
+    .behind-door-image.visible {
+      opacity: 1;
+    }
+
     .hidden-text {
       position: absolute;
       margin: 15px;
@@ -205,36 +80,46 @@
       z-index: 1; /* Ensure the text is behind the door */
       opacity: 0; /* Initially hidden */
       transition: opacity 0.5s ease-in-out; /* Fade in effect */
-      width: 80%;
-      padding: 10px;
+      width: 95%;
+      padding: 30px;
       border-radius: 5px;
     }
-
+    
     .hidden-text.visible {
       opacity: 1;
       z-index: 3;
+      background-color: rgba(51, 51, 51, 0.5); /* Semi-transparent background */
     }
-
+    
     .text-line {
       font-size: 0.9rem;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+      transition: opacity 1.5s ease-out, transform 1.5s ease-out, background-color 0.5s ease-in-out;
       margin: 8px 0;
     }
-
+    
     .hidden-text.visible .text-line.line-1 {
       opacity: 1;
       transform: translateY(0);
-      transition-delay: 0.5s; /* Delay for the first line */
+      transition-delay: 1s; /* Delay for the first line */
     }
-
+    
     .hidden-text.visible .text-line.line-2 {
       opacity: 1;
       transform: translateY(0);
-      transition-delay: 2.5s; /* Delay for the second line */
+      transition-delay: 3s; /* Delay for the second line */
     }
 
+    /* @media (max-width: 768px) {
+      .container.zoom-in {
+        transform: scale(1.75) translate(0%);
+      }
+
+      .behind-door-image {
+        background-size: contain;
+      }
+    } */
   </style>
 </head>
 <body>
@@ -254,9 +139,12 @@
       <div class="hinge hinge-top"></div>
       <div class="hinge hinge-bottom"></div>
 
+      <!-- Behind door -->
+      <div class="behind-door-image"></div>
+
       <!-- Hidden text -->
       <div class="hidden-text">
-        <p class="text-line line-1">들어가 보니,<br>"윤환"의 시체가 있습니다.</p>
+        <p class="text-line line-1">창고 안 바닥에<br>"윤환"의 시체가 있습니다.</p>
         <p class="text-line line-2">이제부터 &lt;창고&gt;를<br>탐사할 수 있습니다.</p>
       </div>
 
@@ -273,11 +161,7 @@
       const door = document.querySelector('.door');
       const container = document.querySelector('.container');
       const hiddenText = document.querySelector('.hidden-text');
-      //Reset text lines
-      // textLines.forEach(line => {
-      //   line.style.opacity = '0';
-      //   line.style.transform = 'translateY(10px)';
-      // });
+      const behindDoorImage = document.querySelector('.behind-door-image');
 
       // Open the door
       door.classList.add('open');
@@ -285,13 +169,18 @@
       // Zoom in after the door opens
       setTimeout(() => {
         container.classList.add('zoom-in');
-      }, 800); // Delay for door opening animation
+      }, 1200); // Delay for door opening animation
+
+      // Show image
+      setTimeout(() => {
+        behindDoorImage.classList.add('visible');
+      }, 3000); // Updated delay for showing the image
 
       // Show the hidden text after zoom-in animation
       setTimeout(() => {
         hiddenText.style.opacity = '1'; // Corrected 'syle' to 'style'
         hiddenText.classList.add('visible');
-      }, 2800); // Delay for zoom-in animation (2s) + extra buffer
+      }, 4800); // Delay for zoom-in animation (2s) + extra buffer
 
     }
   </script>

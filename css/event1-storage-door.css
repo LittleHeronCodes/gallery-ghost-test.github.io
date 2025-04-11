@@ -1,0 +1,149 @@
+/* Door css for event1-storage */
+
+/* Door frame */
+.door-frame {
+  position: relative;
+  width: 220px;
+  height: 380px;
+  background-color: #333;
+  border: 6px solid #222;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  transform-style: preserve-3d;
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.8),
+    inset 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+/* Door hinge */
+.hinge {
+  position: absolute;
+  width: 12px;
+  height: 35px;
+  background: linear-gradient(to right, #555, #777, #555);
+  border-radius: 2px;
+  left: -3px;
+  border: 1px solid #444;
+  z-index: 3; /* Ensure the hinge is above the door */
+}
+
+.hinge-top {
+  top: 60px;
+}
+
+.hinge-bottom {
+  bottom: 60px;
+}
+
+/* Door handle */
+.handle {
+  position: absolute;
+  width: 10px;
+  height: 30px;
+  background: linear-gradient(to right, #ac0303, #6e0101, #ac0303);
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 3px;
+  z-index: 3;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+/* Door frame details */
+.frame-detail {
+  position: absolute;
+  background: #222;
+  z-index: 1;
+}
+
+.frame-top, .frame-bottom {
+  height: 5px;
+  width: calc(100% - 10px);
+  left: 5px;
+}
+
+.frame-top {
+  top: 0px;
+}
+
+.frame-bottom {
+  bottom: 0px;
+}
+
+.frame-left, .frame-right {
+  width: 5px;
+  height: calc(100% - 10px);
+  top: 5px;
+}
+
+.frame-left {
+  left: 0px;
+}
+
+.frame-right {
+  right: 0px;
+}
+
+/* Door texture overlay */
+.door-texture {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-image: 
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 60px,
+      rgba(0, 0, 0, 0.1) 60px,
+      rgba(0, 0, 0, 0.1) 62px
+    );
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Door styles */
+.door {
+  /* width: 185px; */
+  /* height: 355px; */
+  width: 200px;
+  height: 360px;
+  background: linear-gradient(to right, #8B5A2B, #A67B5B);
+  border-radius: 2px;
+  flex-grow: 1;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1.5s ease-in-out;
+  cursor: pointer;
+  backface-visibility: hidden;
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.5),
+    inset 0 0 5px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+  z-index: 2; /* Ensure the door is above the text */
+
+}
+
+.door:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #8B5A2B, #A67B5B);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+}
+
+.door.open {
+  transform: rotateY(-115deg);
+  /* transform: rotate3d(0, 1, 0, -130deg); */
+}
+
+
