@@ -1,4 +1,4 @@
-/* Loading SBAggro font family */
+/* Loading SBAggro font family for global use */
 
 @font-face {
   font-family: 'SBAggroB';
@@ -19,4 +19,9 @@
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+}
+
+/* Remove tap highlight for mobile */
+* {
+	-webkit-tap-highlight-color: transparent;
 }
