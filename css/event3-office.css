@@ -12,11 +12,6 @@
 	--darkblue: #04277e;
 }
 
-/* Remove tap highlight for mobile */
-* {
-	-webkit-tap-highlight-color: transparent;
-}
-
 /* General reset and body styling */
 html {
 	font-family: 'SBAggroL', sans-serif;

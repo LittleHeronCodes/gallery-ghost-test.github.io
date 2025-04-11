@@ -57,12 +57,6 @@ a{
   text-decoration:none;
 }
 
-/* Remove tap highlight for mobile */
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-
 /* General head 2 styling */
 h2 {
   color: var(--grey0); /*#a7a9ac*/
