@@ -4,43 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Map</title>
-    <link rel="stylesheet" href="css/navigation.css">
-    <script src="js/navigation.js"></script>
+    <link rel="stylesheet" href="css/global_palette.css">
+    <link rel="stylesheet" href="css/global.css">
+    <!-- <link rel="stylesheet" href="css/navigation.css"> -->
+    <!-- <script src="js/navigation.js"></script> -->
+    <style>
+        body {
+            font-family: 'SBAggroM', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            text-align: center;
+            margin-top: 20px;
+            min-height: 100vh;
+          
+        }
+
+        .digit-input-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .digit-box {
+            width: 40px;
+            height: 50px;
+            margin: 0 5px;
+            text-align: center;
+            font-size: 24px;
+            border: 2px solid var(--darkred);
+            color: var(--black);
+            background-color: var(--white);
+            border-radius: 5px;
+        }
+
+        .submit-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: var(--darkred);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: var(--red);
+        }
+        .error-message {
+            color: var(--red);
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            height: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <button id="ending-button" onclick="location.href='ending.html'">"엔딩으로 가기"</button>
-
-        <!-- Display the map image -->
-        <img src="assets/map1.png" alt="Interactive Map" usemap="#map1" class="map-image">
-        <img src="assets/map2.png" alt="Interactive Map" usemap="#map2" class="map-image">
-
-        <!-- Define clickable areas -->
-        <map name="map1">
-            <area shape="rect" coords="514,382,545,473" href="#" title="Security" alt="Security" onclick="areaClicked('Security')">
-            <!-- <area shape="circle" coords="300,200,50" href="#" alt="Area 2" onclick="areaClicked('Area 2')"> -->
-            <!-- <area shape="poly" coords="400,300,450,350,400,400,350,350" href="#" alt="Area 3" onclick="areaClicked('Area 3')"> -->
-        </map>
-        <map name="map2">
-            <area shape="rect" coords="528,299,418,267" href="#" title="CommonWork" alt="CommonWork" onclick="areaClicked('Common')">
-            <!-- <area shape="circle" coords="300,300,50" href="#" alt="Area 2" onclick="areaClicked('Area 2')"> -->
-            <!-- <area shape="poly" coords="400,400,450,450,400,500,350,450" href="#" alt="Area 3" onclick="areaClicked('Area 3')"> -->
+        <h2>카드의 QR 아래에 있는 <br> 6자리 숫자를 입력하여 주세요</h2>
+        <div class="digit-input-container">
+            <input type="text" class="digit-box" maxlength="1" pattern="[0-9]" inputmode="numeric" autofocus>
+            <input type="text" class="digit-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
+            <input type="text" class="digit-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
+            <input type="text" class="digit-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
+            <input type="text" class="digit-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
+            <input type="text" class="digit-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
         </div>
+        <div id="error-message" class="error-message"></div>
+        <button class="submit-button" id="submit-code">확인</button>
+    </div>
 
-    <!-- Panel to display clicked area -->
-    <div id="panel1" class="panel hidden">
-        <span id="panel-content"></span>
-        <div class="card-container">
-            <img id="card-security1-b" src="assets/card-security1-back.png" alt="Security Card" class="card">
-            <img id="card-security1-f" src="https://www.dropbox.com/scl/fi/l1nfkthhl5vlz45wetw3j/card-security1-front.png?rlkey=kqf50lsz8s2x1dxwgnso3fb0r&st=42mu4cna&raw=1" alt="Security Card" class="card">
-        </div>
-        <button id="close-button" onclick="closePanel()">Close</button>
-    </div>
-    <div id="panel2" class="panel hidden">
-        <span id="panel-content"></span>
-        <img id="card-commonws-b" src="assets/card-commonws-back.png" alt="Security Card" class="card">
-      <!--  <img id="card-commonws-f" src="assets/card-commonws-front.png" alt="Security Card" class="card"> -->
-        <button id="close-button" onclick="closePanel()">Close</button>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const digitInputs = document.querySelectorAll('.digit-box');
+            const submitButton = document.getElementById('submit-code');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Code to page mapping - add your specific codes here
+            const codePageMap = {
+                "010101": "ending.html",
+                "100001": "event1-storage.html",
+                "010010": "event2-backyard.html",
+                "001100": "event3-office.html",
+                "010101": "interview.html"
+            };
+            
+            // Default page for unknown valid codes
+            const defaultPage = "default-page.html";
+            
+            digitInputs.forEach((input, index) => {
+                // Move to next input when a digit is entered
+                input.addEventListener('input', function() {
+                    if (this.value.length === 1) {
+                        // Move to the next input box if available
+                        if (index < digitInputs.length - 1) {
+                            digitInputs[index + 1].focus();
+                        }
+                    }
+                });
+                
+                // Handle backspace to go to previous input
+                input.addEventListener('keydown', function(event) {
+                    if (event.key === 'Backspace' && this.value.length === 0) {
+                        if (index > 0) {
+                            digitInputs[index - 1].focus();
+                        }
+                    }
+                });
+            });
+            
+            // Submit button click handler
+            submitButton.addEventListener('click', function() {
+                // Collect input values
+                let code = '';
+                let isValid = true;
+                
+                digitInputs.forEach(input => {
+                    if (input.value === '') {
+                        isValid = false;
+                    }
+                    code += input.value;
+                });
+                
+                // Validate input
+                if (!isValid) {
+                    errorMessage.textContent = '모든 숫자를 입력해주세요.';
+                    return;
+                }
+                
+                // Navigate based on the input code
+                if (codePageMap[code]) {
+                    window.location.href = codePageMap[code];
+                } else {
+                    // Either navigate to default page or show error
+                    errorMessage.textContent = '유효하지 않은 코드입니다.';
+                    // Uncomment to navigate to default page instead of showing error
+                    // window.location.href = defaultPage;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
