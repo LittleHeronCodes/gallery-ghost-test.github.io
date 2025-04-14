@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Map</title>
+    <title>백업 홈</title>
     <link rel="stylesheet" href="css/global_palette.css">
     <link rel="stylesheet" href="css/global.css">
-    <!-- <link rel="stylesheet" href="css/navigation.css"> -->
-    <!-- <script src="js/navigation.js"></script> -->
     <style>
         body {
             font-family: 'SBAggroM', sans-serif;
@@ -21,7 +19,7 @@
             align-items: center; /* Center items horizontally */
             justify-content: center; /* Center items vertically */
             text-align: center;
-            margin-top: 20px;
+            margin: 15px 10px 10px 10px;
             min-height: 100vh;
           
         }
@@ -31,6 +29,7 @@
             justify-content: center;
             margin: 20px 0;
         }
+
         .digit-box {
             width: 40px;
             height: 50px;
@@ -41,6 +40,14 @@
             color: var(--black);
             background-color: var(--white);
             border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .digit-box:focus {
+            outline: none;
+            border-color: var(--red);
+            box-shadow: 0 0 5px rgba(159, 29, 37, 0.7);
+            transform: scale(1.05);
         }
 
         .submit-button {
@@ -53,16 +60,35 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
         }
+
         .submit-button:hover {
             background-color: var(--red);
         }
+
+        .submit-button:active {
+            background-color: var(--red);
+        }
+
         .error-message {
             color: var(--red);
             text-align: center;
             margin-top: 10px;
             font-size: 16px;
             height: 20px;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake {
+            animation: shake 0.2s ease-in-out;
         }
     </style>
 </head>
@@ -77,8 +103,8 @@
             <input type="text" class="digit-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
             <input type="text" class="digit-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
         </div>
-        <div id="error-message" class="error-message"></div>
         <button class="submit-button" id="submit-code">확인</button>
+        <div id="error-message" class="error-message"></div>
     </div>
 
     <script>
@@ -86,10 +112,11 @@
             const digitInputs = document.querySelectorAll('.digit-box');
             const submitButton = document.getElementById('submit-code');
             const errorMessage = document.getElementById('error-message');
+            const digitInputContainer = document.querySelector('.digit-input-container');
             
             // Code to page mapping - add your specific codes here
             const codePageMap = {
-                "010101": "ending.html",
+                "111111": "ending.html",
                 "100001": "event1-storage.html",
                 "010010": "event2-backyard.html",
                 "001100": "event3-office.html",
@@ -97,8 +124,27 @@
             };
             
             // Default page for unknown valid codes
-            const defaultPage = "default-page.html";
+            // const defaultPage = "default-page.html";
             
+            // Show error with shake animation
+            function showError(message) {
+                errorMessage.textContent = message;
+                
+                // Add shake animation
+                digitInputContainer.classList.add('shake');
+
+                // Remove shake class after animation ends
+                setTimeout(() => {
+                    digitInputContainer.classList.remove('shake');
+
+                    // Reset all input
+                    // digitInputs.forEach(input => {
+                    //     input.value = '';
+                    // });
+                    // digitInputs[0].focus(); // Focus on the first input again
+                }, 500);
+            }
+
             digitInputs.forEach((input, index) => {
                 // Move to next input when a digit is entered
                 input.addEventListener('input', function() {
@@ -122,6 +168,8 @@
             
             // Submit button click handler
             submitButton.addEventListener('click', function() {
+                // this.blur(); // Remove focus from the button
+
                 // Collect input values
                 let code = '';
                 let isValid = true;
@@ -135,7 +183,8 @@
                 
                 // Validate input
                 if (!isValid) {
-                    errorMessage.textContent = '모든 숫자를 입력해주세요.';
+                    showError('모든 숫자를 입력해주세요.');
+                    // errorMessage.textContent = '모든 숫자를 입력해주세요.';
                     return;
                 }
                 
@@ -143,10 +192,9 @@
                 if (codePageMap[code]) {
                     window.location.href = codePageMap[code];
                 } else {
-                    // Either navigate to default page or show error
-                    errorMessage.textContent = '유효하지 않은 코드입니다.';
-                    // Uncomment to navigate to default page instead of showing error
-                    // window.location.href = defaultPage;
+                    // Show error for invalid code
+                    showError('유효하지 않은 코드입니다.');
+                    // errorMessage.textContent = '유효하지 않은 코드입니다.';
                 }
             });
         });

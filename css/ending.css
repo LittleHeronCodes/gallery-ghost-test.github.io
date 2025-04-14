@@ -41,7 +41,6 @@ body {
   font-family: 'SBAggroL', sans-serif;
   background: var(--black); /*#1e1c1b*/
   color: var(--primary-text); /*#f3f3ee*/
-  /* display: flex; */
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -78,7 +77,7 @@ h2 {
 }
 
 .results-html {
-  margin-top: 14px
+  margin-top: 14px;
 }
 
 .results-form {
@@ -108,12 +107,10 @@ h2 {
 
 .tab-button:hover {
   background-color: var(--tab-hover-bg);
-  /* background-color: #0056b3; */
 }
 
 .tab-button.active {
   background-color: var(--tab-active-bg);
-  /* background-color: #2881a7; */
 }
 
 
@@ -126,28 +123,19 @@ h2 {
   bottom: 0;
   visibility: hidden;
   padding: 15px;
-  /* background-color: #007bff; */
-  /* opacity: 0; */
-  /* transform:rotateY(180deg);
-  transition: all .5s linear; */
   transition: all background-color 0.3s ease;
   z-index: 0;
 }
 
 .tab-content.active {
-  /* transform:rotateY(0deg); */
-  /* display: block; */
-  /* opacity: 1; */
   visibility: visible;
   background-color: var(--tab-active-bg);
-  /* background-color: #2881a7; */
   z-index: 1;
 }
 
 
 /* Quiz page styling */
 .quiz-page {
-  /* background: #f9f9f9; */
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -192,11 +180,8 @@ label.conts {
   display: inline-block;
   padding: 5px 10px;
   margin: 2px 2px;
-  /* border: 2px solid #007bff; */
   border-radius: 5px;
   background-color: var(--palered);
-  /* background-color: #004794; */
-  /* color: #007bff; Default text color */
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -204,9 +189,7 @@ label.conts {
 /* Highlight the label when the radio button is selected */
 input[type="radio"]:checked + label.conts {
   background-color: var(--red);
-  /* background-color: #0067d4; */
   color: var(--white); /* Highlighted text color */
-  /* border-color: #0056b3; Highlighted border color */
 }
 
 /* Buttons for navigation */
@@ -216,8 +199,6 @@ button {
   border-radius: 5px;
   background-color: var(--darkred);
   color: var(--white);
-  /* background-color: #007bff; */
-  /* color: #ffffff; */
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -230,8 +211,8 @@ button:hover {
 
 button:active {
   background-color: var(--red);
-  /* transform: scale(0.98);
-  transition: transform 0.1s ease; */
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
 }
 
 /* Ending and score sections */
@@ -244,15 +225,12 @@ button:active {
 .ending-content p {
   font-size: 16px;
   color: #333;
-} */
-
-
+}
 
 p {
   font-size: 18px;
   font-weight: bold;
 }
-
 
 /* Responsive design */
 @media (max-width: 768px) {
