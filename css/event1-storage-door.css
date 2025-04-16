@@ -148,3 +148,84 @@
 }
 
 
+/* Media query for narrow screens */
+@media (max-width: 250px) {
+  /* Door frame */
+  .door-frame {
+    width: 170px;
+    height: 300px;
+    border: 4px solid #222;
+    box-shadow: 
+      0 0 15px rgba(0, 0, 0, 0.8),
+      inset 0 0 8px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Door hinges */
+  .hinge {
+    width: 8px;
+    height: 28px;
+    left: -2px;
+  }
+
+  .hinge-top {
+    top: 45px;
+  }
+
+  .hinge-bottom {
+    bottom: 45px;
+  }
+
+  /* Door handle */
+  .handle {
+    width: 8px;
+    height: 24px;
+    right: 12px;
+  }
+
+  /* Door frame details */
+  .frame-detail {
+    background: #222;
+  }
+
+  .frame-top, .frame-bottom {
+    height: 4px;
+    width: calc(100% - 8px);
+    left: 4px;
+  }
+
+  .frame-left, .frame-right {
+    width: 4px;
+    height: calc(100% - 8px);
+    top: 4px;
+  }
+
+  /* Door */
+  .door {
+    width: 155px;
+    height: 285px;
+    box-shadow: 
+      0 3px 8px rgba(0, 0, 0, 0.5),
+      inset 0 0 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Door texture */
+  .door-texture {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    background-image: 
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 48px,
+        rgba(0, 0, 0, 0.1) 48px,
+        rgba(0, 0, 0, 0.1) 50px
+      );
+  }
+
+  /* Adjusted animation */
+  .door.open {
+    transform: rotateY(-105deg); /* Slightly less rotation for small screens */
+  }
+}
