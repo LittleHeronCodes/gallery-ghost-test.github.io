@@ -15,42 +15,62 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      height: 100vh;
+      align-self: center;
+      min-height: 100vh;
       background-color: #222;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
     
     p {
       font-size: 1.2rem;
       margin: 20px;
     }
+
+    .wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      width: 100%;
+      max-width: 600px;
+      min-height: auto;
+      padding-bottom: 50px;
+    }
     
     .text-container {
-      position: fixed; /* Fixed position to prevent movement */
-      top: 10%;
+      position: relative;
       text-align: center;
       color: #f3f3ee;
       font-family: 'SBAggroM', sans-serif;
       font-size: 0.8rem;
-      z-index: 0; /* Ensure it stays above other elements */
+      z-index: 0;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      width: 100%;
+      transition: opacity 0.8s ease-out;
     }
     
-    .container {
+    .door-container {
       perspective: 1200px;
       overflow: visible;
-      transition: transform 2s ease-in-out; /* Apply zoom effect here */
+      transition: transform 2s ease-in-out;
+      margin-top: 10px;
+      display: flex;
     }
     
-    .container.zoom-in {
+    .door-container.zoom-in {
       transform: scale(2) translate(0%);
       transform-origin: center;
     }
     
     body.zoom-in {
-      transform: scale(1.75) translateY(-10%);
+      /* transform: scale(1.75) translateY(-10%); */
+      overflow: hidden;
     }
     
     .behind-door-image {
@@ -61,7 +81,7 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      transition: opacity 0.5s ease-in-out; /* Fade in effect */
+      transition: opacity 1s ease-in-out; /* Fade in effect */
       z-index: 0;
       max-width: 95vw; /* Ensure it doesn't exceed viewport width */
       max-height: 95vh;
@@ -72,23 +92,28 @@
       opacity: 1;
     }
 
+    .behind-door-image.fade-out {
+      opacity: 0.15;
+    }
+
     .hidden-text {
       position: absolute;
-      margin: 15px;
+      margin: 5px;
       color: #f3f3ee; /* Light text color */
       text-align: center;
       z-index: 1; /* Ensure the text is behind the door */
       opacity: 0; /* Initially hidden */
       transition: opacity 0.5s ease-in-out; /* Fade in effect */
       width: 95%;
-      padding: 30px;
+      max-width: 180px;
+      padding: 10px 20px 10px 20px;
       border-radius: 5px;
     }
     
     .hidden-text.visible {
       opacity: 1;
-      z-index: 3;
-      background-color: rgba(51, 51, 51, 0.825); /* Semi-transparent background */
+      z-index: 1;
+      /* background-color: rgba(51, 51, 51, 0.825); */
     }
     
     .text-line {
@@ -111,70 +136,128 @@
       transition-delay: 3s; /* Delay for the second line */
     }
 
-    /* @media (max-width: 768px) {
-      .container.zoom-in {
-        transform: scale(1.75) translate(0%);
+    /* Responsive design */
+    @media (min-height: 800px) {
+      .wrapper {
+        margin-top: 80px;
+      }
+    }
+
+    @media (max-height: 700px) {
+      .wrapper {
+        margin-top: 20px;
       }
 
-      .behind-door-image {
-        background-size: contain;
+      .text-container {
+        margin-bottom: 15px;
       }
-    } */
+
+      p {
+        font-size: 1rem;
+        margin: 10px;
+      }
+    }
+
+    @media (max-height: 500px) {
+      .wrapper {
+        margin-top: 10px;
+      }
+
+      .text-container {
+        margin-bottom: 2px;
+      }
+
+      .door-container {
+        margin-top: 2px;
+      }
+
+      .door-frame {
+        transform: scale(0.85);
+      }
+    }
+
   </style>
 </head>
 <body>
-  <div class="text-container">
-    <p>창고 문을 클릭하여 열어보세요.</p>
-  </div>
-    
-  <div class="container">
-    <div class="door-frame">
-      <!-- Frame details -->
+  <div class="wrapper">
+
+    <div class="text-container">
+      <p>창고 문을 클릭하여 열어보세요.</p>
+    </div>
+
+    <div class="door-container">
+      <div class="door-frame">
+        
+        <!-- Frame details -->
         <div class="frame-detail frame-top"></div>
         <div class="frame-detail frame-bottom"></div>
         <div class="frame-detail frame-left"></div>
         <div class="frame-detail frame-right"></div>
+        
+        <!-- Hinges -->
+        <div class="hinge hinge-top"></div>
+        <div class="hinge hinge-bottom"></div>
+        
+        <!-- Behind door -->
+        <div class="behind-door-image"></div>
+        
+        <!-- Hidden text -->
+        <div class="hidden-text">
+          <p class="text-line line-1">창고 안 바닥에<br>"윤환"의 시체가 있습니다.</p>
+          <p class="text-line line-2">이제부터 &lt;창고&gt;를<br>탐사할 수 있습니다.</p>
+        </div>
+        
+        <!-- Door -->
+        <div class="door" onclick="openDoor()">
+          <div class="handle"></div>
+          <div class="door-texture"></div>
+        </div>
 
-      <!-- Hinges -->
-      <div class="hinge hinge-top"></div>
-      <div class="hinge hinge-bottom"></div>
-
-      <!-- Behind door -->
-      <div class="behind-door-image"></div>
-
-      <!-- Hidden text -->
-      <div class="hidden-text">
-        <p class="text-line line-1">창고 안 바닥에<br>"윤환"의 시체가 있습니다.</p>
-        <p class="text-line line-2">이제부터 &lt;창고&gt;를<br>탐사할 수 있습니다.</p>
-      </div>
-
-      <!-- Door -->
-      <div class="door" onclick="openDoor()">
-        <div class="handle"></div>
-        <div class="door-texture"></div>
       </div>
     </div>
+
   </div>
+
 
   <script>
     function openDoor() {
       const door = document.querySelector('.door');
-      const container = document.querySelector('.container');
+      const doorContainer = document.querySelector('.door-container');
       const hiddenText = document.querySelector('.hidden-text');
       const behindDoorImage = document.querySelector('.behind-door-image');
+
+      // Scroll to center door if needed
+      const doorRect = doorContainer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // If door is not fully visible, scroll to center it
+      if (doorRect.top < 0 || doorRect.bottom > windowHeight) {
+        window.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+
+      // Lock scrolling when door opens
+      // document.body.style.overflow = 'hidden';
 
       // Open the door
       door.classList.add('open');
 
       // Zoom in after the door opens
       setTimeout(() => {
-        container.classList.add('zoom-in');
+        doorContainer.classList.add('zoom-in');
       }, 1200); // Delay for door opening animation
 
       // Show image
       setTimeout(() => {
         behindDoorImage.classList.add('visible');
       }, 3000); // Updated delay for showing the image
+
+      // Fade out image
+      setTimeout(() => {
+        behindDoorImage.classList.add('fade-out');
+      }, 4500);
 
       // Show the hidden text after zoom-in animation
       setTimeout(() => {

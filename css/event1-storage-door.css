@@ -13,6 +13,7 @@
   align-items: center;
   overflow: visible;
   transform-style: preserve-3d;
+  z-index: 2;
   box-shadow:
     0 0 20px rgba(0, 0, 0, 0.8),
     inset 0 0 10px rgba(0, 0, 0, 0.5); 
