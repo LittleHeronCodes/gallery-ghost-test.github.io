@@ -47,6 +47,7 @@
 			opacity: 1;
 			transition: opacity 0.5s ease-in-out;
 			text-align: center;
+			margin: 20px 10px;
 		}
 
 		.intro-container.hide {
@@ -62,6 +63,7 @@
 			text-align: center;
 			align-items: center;
 			justify-content: center;
+			overflow: hidden;
 		}
 
 		.back-container.show {
@@ -93,9 +95,9 @@
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
 		width: 100%;
-		max-width: 800px;
+		max-width: 700px;
 		margin: 0 auto;
-		justify-content: center;;
+		justify-content: center;
     }
     
     #cardsContainer.show {
@@ -304,7 +306,7 @@
 						cards.forEach((card, index) => {
 							setTimeout(() => {
 								card.classList.add('appear');
-							}, index * 500); // Delay for each card
+							}, index * 350); // Delay for each card
 						});
 					}, 1000);
 				}, 300);
